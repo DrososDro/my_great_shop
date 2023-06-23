@@ -1,0 +1,39 @@
+{% if messages %}
+    <hr class="taller pattern" />
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col pb-3">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                                <button type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                <strong>{{ message }}</strong>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if form.errors %}
+    <hr class="taller pattern" />
+    <div class="container">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+            <strong><i class="fas fa-exclamation-triangle"></i>Error</strong>
+            {% for error in form.errors.values %}
+                <ul>
+                    <li>{{ error }}</li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
