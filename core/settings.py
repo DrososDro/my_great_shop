@@ -111,11 +111,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Athens"
 
 USE_I18N = True
 
 USE_TZ = True
+
+# Email backend config
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "drosostest@gmail.com"
+EMAIL_HOST_PASSWORD = os.environ.get("emailpass")
 
 
 # Static files (CSS, JavaScript, Images)
