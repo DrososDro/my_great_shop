@@ -6,7 +6,12 @@ import uuid
 
 
 class AccountProfile(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        primary_key=True,
+        editable=False,
+    )
 
     account = models.OneToOneField(Account, on_delete=models.CASCADE)
     email = models.EmailField(

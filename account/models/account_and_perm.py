@@ -65,7 +65,12 @@ class Account(AbstractBaseUser):
     user name this will be later
     """
 
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        primary_key=True,
+        editable=False,
+    )
 
     email = models.EmailField(
         verbose_name="email address",
@@ -111,7 +116,12 @@ class Account(AbstractBaseUser):
 
 
 class Permissions(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        primary_key=True,
+        editable=False,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100, unique=True)
 
