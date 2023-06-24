@@ -22,6 +22,8 @@
     - can take invoices and finish the orders
   - have staff_admin
     - the staff_admin can CRUD products
+  - shop_admin
+    - add and edit products
 
 ---
 
