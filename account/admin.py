@@ -75,7 +75,7 @@ class UserAdmin(BaseUserAdmin):
                     "tax_id_number",
                     "job_role",
                     "company",
-                    "profile_image"
+                    "profile_image",
                 ]
             },
         ),

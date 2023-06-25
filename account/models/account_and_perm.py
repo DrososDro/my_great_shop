@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 import uuid
 
+from django.urls import reverse
+
 
 # Create your models here.
 class MyUserManager(BaseUserManager):
@@ -124,11 +126,12 @@ class Account(AbstractBaseUser):
         return f"{self.first_name} {self.last_name}".title()
 
     def set_profile_image(self):
-        profiles = self.objects.multipleimages_set.all()
+        profiles = self.multipleimages_set.all()
 
-        return [
-            (profile.image_url(), profile.image_name) for profile in profiles
-        ] or None
+        return [(p_i.image_url(), p_i.image_name) for p_i in profiles]
+
+    def account_url(self):
+        return reverse("profile", kwargs={"pk": self.id})
 
 
 class Permissions(models.Model):
