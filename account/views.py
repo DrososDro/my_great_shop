@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from account.models import Account
 from account.admin import UserCreationForm
+from account.forms import UpdateAccount
 
 # Create your views here.
 
@@ -35,4 +36,20 @@ class Register(CreateView):
             self.request,
             "Your account has been created Check your email to activate it",
         )
+        return super().get_success_url()
+
+
+class UserProfile(UpdateView):
+    model = Account
+    template_name = "account/user_account.html"
+    form_class = UpdateAccount
+
+    def get_success_url(self):
+        if self.success_url is None:
+            self.success_url = reverse(
+                "profile",
+                kwargs={
+                    "pk": self.object.pk,
+                },
+            )
         return super().get_success_url()
