@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.core.exceptions import ValidationError
-from account.models import Account, Permissions
+from account.models import Account, Permissions, MultipleImages
 from django.contrib.auth.password_validation import validate_password
 
 
@@ -63,7 +63,22 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ["is_admin", "is_active"]
     fieldsets = [
         (None, {"fields": ["email", "password"]}),
-        ("User Info", {"fields": ["username", "first_name", "last_name"]}),
+        (
+            "User Info",
+            {
+                "fields": [
+                    "username",
+                    "first_name",
+                    "last_name",
+                    "telephone",
+                    "id_number",
+                    "tax_id_number",
+                    "job_role",
+                    "company",
+                    "profile_image"
+                ]
+            },
+        ),
         (
             "User Permissions",
             {
@@ -103,4 +118,5 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(Account, UserAdmin)
 admin.site.register(Permissions)
+admin.site.register(MultipleImages)
 admin.site.unregister(Group)
