@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 import uuid
 
+from django.urls import reverse
+
 
 # Create your models here.
 class MyUserManager(BaseUserManager):
@@ -88,6 +90,15 @@ class Account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
 
+    # general user settings
+    receive_newsletters = models.BooleanField(default=True)
+    telephone = models.CharField(max_length=200, null=True, blank=True)
+    id_number = models.CharField(max_length=200, null=True, blank=True)
+    job_role = models.CharField(max_length=200, null=True, blank=True)
+    company = models.CharField(max_length=200, blank=True, null=True)
+    tax_id_number = models.CharField(max_length=200, blank=True, null=True)
+    profile_image = models.CharField(max_length=200, null=True, blank=True)
+
     # here is creations of the account and the modified date
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
@@ -113,6 +124,14 @@ class Account(AbstractBaseUser):
     def full_name(self):
         """return full name as Title"""
         return f"{self.first_name} {self.last_name}".title()
+
+    def set_profile_image(self):
+        profiles = self.multipleimages_set.all()
+
+        return [(p_i.image_url(), p_i.image_name) for p_i in profiles]
+
+    def account_url(self):
+        return reverse("profile", kwargs={"pk": self.id})
 
 
 class Permissions(models.Model):
