@@ -25,7 +25,13 @@ class MultipleImages(models.Model):
 
 
 class BillingAdress(models.Model):
-    billing_address = models.OneToOneField(
+    id = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        primary_key=True,
+        editable=False,
+    )
+    billing_address = models.ForeignKey(
         Account,
         on_delete=models.CASCADE,
         related_name="billing_address",

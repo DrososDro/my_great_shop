@@ -133,6 +133,16 @@ class Account(AbstractBaseUser):
     def account_url(self):
         return reverse("profile", kwargs={"pk": self.id})
 
+    def billing_url(self):
+        return reverse(
+            "billing-address", kwargs={"pk": self.billing_address.all()[0].id}
+        )
+
+    def delivery_url(self):
+        return reverse(
+            "delivery-address", kwargs={"pk": self.delivery_address.all()[0].id}
+        )
+
 
 class Permissions(models.Model):
     id = models.UUIDField(

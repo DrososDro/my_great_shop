@@ -40,7 +40,7 @@ class BillingAddressForm(forms.ModelForm):
         exclude = ["delivery_address"]
 
     def __init__(self, *args, **kwargs):
-        super(UpdateAccount, self).__init__(*args, **kwargs)
+        super(BillingAddressForm, self).__init__(*args, **kwargs)
         for name, field in self.fields.items():
             field.widget.attrs.update(
                 {
@@ -56,7 +56,7 @@ class DeliveyAddressForm(forms.ModelForm):
         exclude = ["billing_address"]
 
     def __init__(self, *args, **kwargs):
-        super(UpdateAccount, self).__init__(*args, **kwargs)
+        super(DeliveyAddressForm, self).__init__(*args, **kwargs)
         for name, field in self.fields.items():
             field.widget.attrs.update(
                 {

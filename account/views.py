@@ -14,9 +14,9 @@ from django.contrib.auth.forms import (
     urlsafe_base64_encode,
 )
 from django.views.generic import CreateView, UpdateView
-from account.models import Account, Permissions
+from account.models import Account, Permissions, BillingAdress
 from account.admin import UserCreationForm
-from account.forms import UpdateAccount
+from account.forms import UpdateAccount, BillingAddressForm, DeliveyAddressForm
 from account.utils import profile_img_rename
 from django.core.mail import EmailMessage
 
@@ -74,7 +74,16 @@ class UserProfile(UpdateView):
 
     def get_success_url(self):
         self.success_url = self.object.account_url()
+        messages.success(
+            self.request,
+            "You successfully update your personal informations",
+        )
         return super().get_success_url()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["action"] = self.request.user.account_url()
+        return context
 
     def post(self, request, *args, **kwargs):
         super().post(request, *args, **kwargs)
@@ -104,3 +113,41 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, "Invalid activation link")
         return redirect("register")
+
+
+class BillingAddressView(UpdateView):
+    model = BillingAdress
+    template_name = "account/user_account.html"
+    form_class = BillingAddressForm
+
+    def get_success_url(self):
+        self.success_url = self.request.user.billing_url()
+        messages.success(
+            self.request,
+            "You successfully update your billing info",
+        )
+        return super().get_success_url()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["action"] = self.request.user.billing_url()
+        return context
+
+
+class DeliveryAddressView(UpdateView):
+    model = BillingAdress
+    template_name = "account/user_account.html"
+    form_class = DeliveyAddressForm
+
+    def get_success_url(self):
+        self.success_url = self.request.user.delivery_url()
+        messages.success(
+            self.request,
+            "You successfully update your billing info",
+        )
+        return super().get_success_url()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["action"] = self.request.user.delivery_url()
+        return context
