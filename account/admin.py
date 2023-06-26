@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.core.exceptions import ValidationError
-from account.models import Account, Permissions, MultipleImages
+from account.models import Account, Permissions, MultipleImages, BillingAdress
 from django.contrib.auth.password_validation import validate_password
 
 
@@ -119,4 +119,5 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(Account, UserAdmin)
 admin.site.register(Permissions)
 admin.site.register(MultipleImages)
+admin.site.register(BillingAdress)
 admin.site.unregister(Group)

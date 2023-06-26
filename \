@@ -1,0 +1,12 @@
+from django.db.models.signals import post_save
+from account.models import BillingAdress, Account
+
+
+def create_billing_and_delivery_addresses(sender, instance, created, **kwargs):
+    print(instance.__dict__)
+    x = BillingAdress.()__dict__
+    print(x)
+    print("*" * 125)
+
+
+post_save.connect(create_billing_and_delivery_addresses, sender=Account)
