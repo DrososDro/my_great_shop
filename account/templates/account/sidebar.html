@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="page-header page-header-modern bg-color-light-scale-1 page-header-lg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+                    <h1 class="font-weight-bold text-dark">User Settings</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container pt-3 pb-2">
+        <div class="row pt-2">
+            <div class="col-lg-3 mt-4 mt-lg-0">
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="profile-image-outer-container">
+                        <div class="profile-image-inner-container bg-color-primary">
+                            <img src="{{ request.user.profile_image }}"
+                                 alt="{{ request.user.first_name }} photo" />
+                        </div>
+                    </div>
+                </div>
+                <aside class="sidebar mt-2" id="sidebar">
+                    <ul class="nav nav-list flex-column mb-5">
+                        <li class="nav-item">
+                            <a class="nav-link text-3 {% if '/billing-address/' in request.path %}text-dark active{% endif %}"
+                               href="{{ request.user.billing_url }}">Billing Address</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-3{% if '/delivery-address/' in request.path %}text-dark active{% endif %}"
+                               href="{{ request.user.delivery_url }}">Delivery address</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-3  {% if '/profile/' in request.path %}text-dark active{% endif %}"
+                               href="{% url 'profile' request.user.id %}">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-3" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+            {% block profile %}
+            {% endblock profile %}
+        </div>
+    </div>
+{% endblock content %}

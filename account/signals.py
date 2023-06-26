@@ -1,22 +1,23 @@
 from django.db.models.signals import post_save
-from account.models import Account
-from django.core.mail import send_mail
+from account.models import BillingAdress, Account
 
 
-def sending_welcome_mail(sender, instance, created, **kwargs):
+def create_billing_and_delivery_addresses(sender, instance, created, **kwargs):
     if created:
-        send_mail(
-            "{{Welcome to our company}}",
-            """
-Here is the message.
-is is in multiple lines
-or in one
-k
-        """,
-            "drosostest@gmail.com",
-            ["drosinakis.drosos1@gmail.com"],
-            fail_silently=False,
+        # dict contains the values
+        instance_attrs = {
+            k: v
+            for k, v in instance.__dict__.items()
+            if k in BillingAdress().__dict__ and k not in ["id", "_state"]
+        }
+        # delivery_address
+        delivery_address = BillingAdress.objects.create(
+            delivery_address=instance, **instance_attrs
+        )
+        # billing_adress
+        billing_adress = BillingAdress.objects.create(
+            billing_address=instance, **instance_attrs
         )
 
 
-post_save.connect(sending_welcome_mail, sender=Account)
+post_save.connect(create_billing_and_delivery_addresses, sender=Account)
