@@ -14,7 +14,7 @@ class VariationsCategory(models.Model):
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     id = models.UUIDField(
-        default=uuid.uuid4(),
+        default=uuid.uuid4,
         unique=True,
         primary_key=True,
         editable=False,
@@ -29,6 +29,9 @@ class VariationsCategory(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.varation_name
+
 
 class Variations(models.Model):
     """each variation can have different price_b2b and different price
@@ -39,7 +42,7 @@ class Variations(models.Model):
     """
 
     id = models.UUIDField(
-        default=uuid.uuid4(),
+        default=uuid.uuid4,
         unique=True,
         primary_key=True,
         editable=False,
@@ -49,11 +52,14 @@ class Variations(models.Model):
         on_delete=models.CASCADE,
     )
     variation_value = models.CharField(max_length=200, unique=True)
-    is_active = models.BooleanField(Default=True)
+    is_active = models.BooleanField(default=True)
 
     price = models.FloatField(default=0, null=True, blank=True)
     price_b2b = models.FloatField(default=0, null=True, blank=True)
-    discount = models.IntegerField(defautl=0, null=True, blank=True)
+    discount = models.IntegerField(default=0, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.variation_value

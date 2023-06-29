@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.contrib.auth.views import (
     LoginView,
     LogoutView,
@@ -24,7 +24,7 @@ from django.core.mail import EmailMessage
 
 
 def home(request):
-    return render(request, "base.html")
+    return render(request, "products/3_items_view.html")
 
 
 class Login(LoginView):

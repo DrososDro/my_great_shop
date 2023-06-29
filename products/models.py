@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 
@@ -6,12 +7,20 @@ from django.db import models
 
 class Product(models.Model):
     # description of product
-    product_id = models.CharField(
-        max_length=200,
+    id = models.UUIDField(
+        default=uuid.uuid4,
         unique=True,
         primary_key=True,
+        editable=False,
     )
-    secontary_product_ids = models.CharField(max_length=400)
+    product_id = models.CharField(
+        max_length=200,
+    )
+    secontary_product_ids = models.CharField(
+        max_length=400,
+        null=True,
+        blank=True,
+    )
     name = models.CharField(max_length=200, unique=True)
     description = models.TextField()
     # quantity and price
@@ -23,7 +32,7 @@ class Product(models.Model):
 
     # this is if you make an order
     # is_ordered = models.BooleanField(defautl=False)
-    variations = models.ManyToManyField("Variations")
+    # variations = models.ManyToManyField(Variations)
 
     # package dimensions in mm
     weight = models.IntegerField(default=0)
