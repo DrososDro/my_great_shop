@@ -5,7 +5,7 @@
         <!-- Basic -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Porto - Multipurpose Website Template</title>
+        <title>1 Column Left Sidebar | Porto - Multipurpose Website Template</title>
         <meta name="keywords" content="WebSite Template" />
         <meta name="description" content="Porto - Multipurpose Website Template">
         <meta name="author" content="okler.net">
@@ -17,7 +17,7 @@
               content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
         <!-- Web Fonts  -->
         <link id="googleFonts"
-              href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&display=swap"
+              href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
               rel="stylesheet"
               type="text/css">
         <!-- Vendor CSS -->
@@ -44,9 +44,6 @@
         <link rel="stylesheet" href="{% static 'css/theme-elements.css' %}">
         <link rel="stylesheet" href="{% static 'css/theme-blog.css' %}">
         <link rel="stylesheet" href="{% static 'css/theme-shop.css' %}">
-        <!-- Current Page CSS -->
-        <link rel="stylesheet"
-              href="{% static 'vendor/circle-flip-slideshow/css/component.css' %}">
         <!-- Skin CSS -->
         <link id="skinCSS"
               rel="stylesheet"
@@ -55,16 +52,13 @@
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <!-- Head Libs -->
         <script src="{% static 'vendor/modernizr/modernizr.min.js' %}"></script>
-        <!-- Current Page Vendor and Views -->
-        <script src="{% static 'js/views/view.shop.js' %}"></script>
-        <!-- Examples -->
-        <script src="{% static 'js/examples/examples.gallery.js' %}"></script>
     </head>
     <body data-plugin-page-transition>
         <div class="body">
-            {% include "includes/navbar.html" %}
+            {% include "includes/navbar2.html" %}
             {% include "includes/messages.html" %}
-            <div role="main" class="main">
+            <div role="main" class="main shop">
+                {% include "includes/bg_image.html" %}
                 {% block content %}
                 {% endblock content %}
             </div>
@@ -74,12 +68,11 @@
         <script src="{% static 'vendor/plugins/js/plugins.min.js' %}"></script>
         <script src="{% static 'vendor/bootstrap-star-rating/js/star-rating.min.js' %}"></script>
         <script src="{% static 'vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js' %}"></script>
-        <script src="{% static 'vendor/elevatezoom/jquery.elevatezoom.min.js' %}"></script>
         <script src="{% static 'vendor/jquery.countdown/jquery.countdown.min.js' %}"></script>
         <!-- Theme Base, Components and Settings -->
         <script src="{% static 'js/theme.js' %}"></script>
         <!-- Current Page Vendor and Views -->
-        <script src="{% static 'js/views/view.contact.js' %}"></script>
+        <script src="{% static 'js/views/view.shop.js' %}"></script>
         <!-- Theme Custom -->
         <script src="{% static 'js/custom.js' %}"></script>
         <!-- Theme Initialization Files -->
