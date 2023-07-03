@@ -24,8 +24,7 @@ from django.core.mail import EmailMessage
 
 
 def home(request):
-    # return render(request, "products/3_items_view.html")
-    return render(request, "products/shop.html")
+    return render(request, "products/shop3.html")
 
 
 class Login(LoginView):
