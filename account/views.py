@@ -23,10 +23,6 @@ from django.core.mail import EmailMessage
 # Create your views here.
 
 
-def home(request):
-    return render(request, "products/shop3.html")
-
-
 class Login(LoginView):
     model = Account
     template_name = "account/login_register.html"
