@@ -10,142 +10,137 @@
                          data-plugin-masonry
                          data-plugin-options="{'layoutMode': 'fitRows'}">
                         <!--single procuct-->
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="product mb-0">
-                                <div class="product-thumb-info border-0 mb-3">
-                                    <div class="product-thumb-info-badges-wrapper">
-                                        <span class="badge badge-ecommerce badge-success">NEW</span>
-                                        <span class="badge badge-ecommerce badge-danger">27% OFF</span>
-                                    </div>
-                                    <div class="addtocart-btn-wrapper">
-                                        <a href="shop-cart.html"
-                                           class="text-decoration-none addtocart-btn"
-                                           title="Add to Cart">
-                                            <i class="icons icon-bag"></i>
+                        {% for product in object_list %}
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="product mb-0">
+                                    <div class="product-thumb-info border-0 mb-3">
+                                        <div class="product-thumb-info-badges-wrapper">
+                                            {% if not product.is_available %}<span class="badge badge-ecommerce badge-danger">OUT OF STOCK</span>{% endif %}
+                                            {% if product.discount_offer %}
+                                                <span class="badge badge-ecommerce badge-danger">{{ product.discount_offer }}% OFF</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="addtocart-btn-wrapper">
+                                            <a href="#"
+                                               class="text-decoration-none addtocart-btn"
+                                               title="Add to Cart">
+                                                <i class="icons icon-bag"></i>
+                                            </a>
+                                        </div>
+                                        {% if product.offer_lasts %}
+                                            <div class="countdown-offer-wrapper">
+                                                <div class="text-color-light negative-ls-05 text-2" data-plugin-countdown data-plugin-options="{'textDay': 'DAYS', 'textHour': 'HRS', 'textMin': 'MIN', 'textSec': 'SEC', 'date': '{{ product.offer_lasts|date:"Y/m/d H:i:s" }}', 'numberClass': 'text-color-light', 'wrapperClass': 'text-color-light', 'insertHTMLbefore': '<span>OFFER ENDS IN </span>', 'textDay': 'DAYS', 'textHour': ':', 'textMin': ':', 'textSec': '', 'uppercase': true}">
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <a href="#">
+                                            <a class="quick-view popup-with-zoom-anim text-uppercase font-weight-semibold text-2"
+                                               href="#{{ product.id }}">QUICK VIEW</a>
+                                            <div class="product-thumb-info-image">
+                                                <img alt=""
+                                                     class="img-fluid"
+                                                     src="{% static 'img/products/product-grey-3.jpg' %}" />
+                                            </div>
                                         </a>
                                     </div>
-                                    <div class="countdown-offer-wrapper">
-                                        <div class="text-color-light negative-ls-05 text-2"
-                                             data-plugin-countdown
-                                             data-plugin-options="{'textDay': 'DAYS', 'textHour': 'HRS', 'textMin': 'MIN', 'textSec': 'SEC', 'date': '2024/01/01 12:00:00', 'numberClass': 'text-color-light', 'wrapperClass': 'text-color-light', 'insertHTMLbefore': '<span>OFFER ENDS IN </span>', 'textDay': 'DAYS', 'textHour': ':', 'textMin': ':', 'textSec': '', 'uppercase': true}">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <a href="#"
+                                               class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">category</a>
+                                            <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+                                                <a href="#" class="text-color-dark text-color-hover-primary">{{ product.product_id }}</a>
+                                            </h3>
                                         </div>
-                                    </div>
-                                    <a href="shop-product-sidebar-left.html">
-                                        <a class="quick-view popup-with-zoom-anim text-uppercase font-weight-semibold text-2"
-                                           href="#small-dialog">QUICK VIEW</a>
-                                        <div class="product-thumb-info-image">
-                                            <img alt=""
-                                                 class="img-fluid"
-                                                 src="{% static 'img/products/product-grey-3.jpg' %}" />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <div>
                                         <a href="#"
-                                           class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">sports</a>
-                                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-                                            <a href="shop-product-sidebar-right.html"
-                                               class="text-color-dark text-color-hover-primary">Workout</a>
-                                        </h3>
+                                           class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
                                     </div>
-                                    <a href="#"
-                                       class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
+                                    <div title="Rated 5 out of 5">
+                                        <input type="text"
+                                               class="d-none"
+                                               value="5"
+                                               title=""
+                                               data-plugin-star-rating
+                                               data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xl'}" />
+                                    </div>
+                                    <p class="price text-5 mb-3">
+                                        {% if  product.discount_offer %}
+                                            <span class="sale text-color-dark font-weight-semi-bold">${{ product.discount_price }}</span>
+                                            <span class="amount">${{ product.price }}</span>
+                                        {% else %}
+                                            <span class="sale text-color-dark font-weight-semi-bold">${{ product.price }}</span>
+                                        {% endif %}
+                                    </p>
                                 </div>
-                                <div title="Rated 5 out of 5">
-                                    <input type="text"
-                                           class="d-none"
-                                           value="5"
-                                           title=""
-                                           data-plugin-star-rating
-                                           data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xl'}" />
-                                </div>
-                                <p class="price text-5 mb-3">
-                                    <span class="sale text-color-dark font-weight-semi-bold">$40,00</span>
-                                    <span class="amount">$30,00</span>
-                                </p>
-                            </div>
-                            <!--goes here-->
-                            <!-- Dialog -->
-                            <div id="small-dialog" class="dialog dialog-lg shop mfp-hide fadeIn">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="thumb-gallery-wrapper">
-                                            <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3">
-                                                <div>
-                                                    <img alt=""
-                                                         class="img-fluid"
-                                                         src="{% static 'img/products/product-grey-7.jpg' %}"
-                                                         data-zoom-image="{% static 'img/products/product-grey-7.jpg' %}">
+                                <!--goes here-->
+                                <!-- Dialog -->
+                                <div id="{{ product.id }}" class="dialog dialog-lg shop mfp-hide fadeIn">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="thumb-gallery-wrapper">
+                                                <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3">
+                                                    <div>
+                                                        <img alt=""
+                                                             class="img-fluid"
+                                                             src="{% static 'img/products/product-grey-7.jpg' %}"
+                                                             data-zoom-image="{% static 'img/products/product-grey-7.jpg' %}">
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <img alt=""
-                                                         class="img-fluid"
-                                                         src="{% static 'img/products/product-grey-6.jpg' %}"
-                                                         data-zoom-image="{% static 'img/products/product-grey-6.jpg' %}">
-                                                </div>
-                                                <div>
-                                                    <img alt=""
-                                                         class="img-fluid"
-                                                         src="{% static 'img/products/product-grey-5.jpg' %}"
-                                                         data-zoom-image="{% static 'img/products/product-grey-5.jpg' %}">
-                                                </div>
-                                            </div>
-                                            <div class="thumb-gallery-thumbs owl-carousel owl-theme manual thumb-gallery-thumbs">
-                                                <div class="cur-pointer">
-                                                    <img alt=""
-                                                         class="img-fluid"
-                                                         src="{% static 'img/products/product-grey-7.jpg' %}">
-                                                </div>
-                                                <div class="cur-pointer">
-                                                    <img alt=""
-                                                         class="img-fluid"
-                                                         src="{% static 'img/products/product-grey-6.jpg' %}">
-                                                </div>
-                                                <div class="cur-pointer">
-                                                    <img alt=""
-                                                         class="img-fluid"
-                                                         src="{% static 'img/products/product-grey-5.jpg' %}">
+                                                <div class="thumb-gallery-thumbs owl-carousel owl-theme manual thumb-gallery-thumbs">
+                                                    <div class="cur-pointer">
+                                                        <img alt=""
+                                                             class="img-fluid"
+                                                             src="{% static 'img/products/product-grey-7.jpg' %}">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="summary entry-summary position-relative">
-                                            <h1 class="font-weight-bold text-7 mb-0">
-                                                <a href="shop-product-full-width.html"
-                                                   class="text-decoration-none text-color-dark text-color-hover-primary">Porto Headphone</a>
-                                            </h1>
-                                            <div class="pb-0 clearfix d-flex align-items-center">
-                                                <div title="Rated 3 out of 5" class="float-start">
-                                                    <input type="text"
-                                                           class="d-none"
-                                                           value="3"
-                                                           title=""
-                                                           data-plugin-star-rating
-                                                           data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
+                                        <div class="col-lg-6">
+                                            <div class="summary entry-summary position-relative">
+                                                <h1 class="font-weight-bold text-7 mb-0">
+                                                    <a href="#"
+                                                       class="text-decoration-none text-color-dark text-color-hover-primary">{{ product.product_id }}</a>
+                                                </h1>
+                                                <h5 class="font-weight-bold text-3 mb-0">
+                                                    <a href="#"
+                                                       class="text-decoration-none text-color-dark text-color-hover-primary">{{ product.alternative_product_id|truncatewords:5 }}</a>
+                                                </h5>
+                                                <div class="pb-0 clearfix d-flex align-items-center">
+                                                    <div title="Rated 3 out of 5" class="float-start">
+                                                        <input type="text"
+                                                               class="d-none"
+                                                               value="4"
+                                                               title=""
+                                                               data-plugin-star-rating
+                                                               data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
+                                                    </div>
+                                                    <div class="review-num">
+                                                        <span class="count" itemprop="ratingCount">(2</span> reviews)
+                                                    </div>
                                                 </div>
-                                                <div class="review-num">
-                                                    <span class="count" itemprop="ratingCount">(2</span> reviews)
+                                                <div class="divider divider-small">
+                                                    <hr class="bg-color-grey-scale-4">
                                                 </div>
-                                            </div>
-                                            <div class="divider divider-small">
-                                                <hr class="bg-color-grey-scale-4">
-                                            </div>
-                                            <p class="price mb-3">
-                                                <span class="sale text-color-dark">$15,00</span>
-                                                <span class="amount">$22,00</span>
-                                            </p>
-                                            <p class="text-3-5 mb-3">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing.
-                                                Fusce in hendrerit purus. Lorem ipsum dolor sit amet.
-                                            </p>
-                                            <ul class="list list-unstyled text-2">
-                                                <li class="mb-0">
-                                                    AVAILABILITY: <strong class="text-color-dark">AVAILABLE</strong>
+                                                <p class="price mb-3">
+                                                    {% if  product.discount_offer %}
+                                                        <span class="sale text-color-dark font-weight-semi-bold">${{ product.discount_price }}</span>
+                                                        <span class="amount">${{ product.price }}</span>
+                                                    {% else %}
+                                                        <span class="sale text-color-dark font-weight-semi-bold">${{ product.price }}</span>
+                                                    {% endif %}
+                                                </p>
+                                                <p class="text-3-5 mb-3">{{ product.description|truncatewords:15 }}</p>
+                                                <ul class="list list-unstyled text-2">
+                                                    <li class="mb-0">
+                                                        AVAILABILITY: <strong class="text-color-dark">
+                                                        {% if product.is_available %}
+                                                            AVAILABLE
+                                                        {% else %}
+                                                            OUT OF STOCK
+                                                        {% endif %}
+                                                    </strong>
                                                 </li>
                                                 <li class="mb-0">
-                                                    SKU: <strong class="text-color-dark">1234567890</strong>
+                                                    BRAND: <strong class="text-color-dark">{{ product.brand }}</strong>
                                                 </li>
                                             </ul>
                                             <form enctype="multipart/form-data" method="post" class="cart">
@@ -195,7 +190,7 @@
                                                            class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
                                                            value="+">
                                                 </div>
-                                                <button href="shop-cart.html"
+                                                <button href="#"
                                                         class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">
                                                     Add to cart
                                                 </button>
@@ -258,12 +253,13 @@
                             </div>
                         </div>
                         <!--end of single product-->
-                    </div>
-                    {% if pages %}
-                        {% include "includes/pagination.html" %}
-                    {% endif %}
+                    {% endfor %}
                 </div>
+                {% if pages %}
+                    {% include "includes/pagination.html" %}
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
 {% endblock content %}
