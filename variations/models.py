@@ -19,7 +19,7 @@ class VariationsCategory(models.Model):
         primary_key=True,
         editable=False,
     )
-    varation_name = models.CharField(
+    variation_name = models.CharField(
         max_length=200,
         unique=True,
         null=True,
@@ -30,7 +30,7 @@ class VariationsCategory(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.varation_name
+        return self.variation_name
 
 
 class Variations(models.Model):
@@ -52,12 +52,15 @@ class Variations(models.Model):
         on_delete=models.CASCADE,
     )
     variation_value = models.CharField(max_length=200, unique=True)
+    """
+
     is_active = models.BooleanField(default=True)
 
     price = models.FloatField(default=0, null=True, blank=True)
     price_b2b = models.FloatField(default=0, null=True, blank=True)
     discount = models.IntegerField(default=0, null=True, blank=True)
 
+    """
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 

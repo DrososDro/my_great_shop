@@ -37,16 +37,16 @@
                                             <a class="quick-view popup-with-zoom-anim text-uppercase font-weight-semibold text-2"
                                                href="#{{ product.id }}">QUICK VIEW</a>
                                             <div class="product-thumb-info-image">
-                                                <img alt=""
+                                                <img alt="{{ product.product_id }}"
                                                      class="img-fluid"
-                                                     src="{% static 'img/products/product-grey-3.jpg' %}" />
+                                                     src="{{ product.product_image_last }}" />
                                             </div>
                                         </a>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <a href="#"
-                                               class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">category</a>
+                                            <a href="{{ product.category.get_url }}"
+                                               class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">{{ product.category.name }}</a>
                                             <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
                                                 <a href="#" class="text-color-dark text-color-hover-primary">{{ product.product_id }}</a>
                                             </h3>
@@ -78,19 +78,23 @@
                                         <div class="col-lg-6">
                                             <div class="thumb-gallery-wrapper">
                                                 <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3">
-                                                    <div>
-                                                        <img alt=""
-                                                             class="img-fluid"
-                                                             src="{% static 'img/products/product-grey-7.jpg' %}"
-                                                             data-zoom-image="{% static 'img/products/product-grey-7.jpg' %}">
-                                                    </div>
+                                                    {% for image in product.multipleproductimages_set.all %}
+                                                        <div>
+                                                            <img alt="{{ product.product_id }}"
+                                                                 class="img-fluid"
+                                                                 src="{{ image.image_url }}"
+                                                                 data-zoom-image="{{ image.image_url }}">
+                                                        </div>
+                                                    {% endfor %}
                                                 </div>
                                                 <div class="thumb-gallery-thumbs owl-carousel owl-theme manual thumb-gallery-thumbs">
-                                                    <div class="cur-pointer">
-                                                        <img alt=""
-                                                             class="img-fluid"
-                                                             src="{% static 'img/products/product-grey-7.jpg' %}">
-                                                    </div>
+                                                    {% for image in product.multipleproductimages_set.all %}
+                                                        <div class="cur-pointer">
+                                                            <img alt="{{ product.product_id }}"
+                                                                 class="img-fluid"
+                                                                 src="{{ image.image_url }}">
+                                                        </div>
+                                                    {% endfor %}
                                                 </div>
                                             </div>
                                         </div>
@@ -139,39 +143,29 @@
                                                         {% endif %}
                                                     </strong>
                                                 </li>
-                                                <li class="mb-0">
-                                                    BRAND: <strong class="text-color-dark">{{ product.brand }}</strong>
-                                                </li>
+                                                {% if  product.brand %}
+                                                    <li class="mb-0">
+                                                        BRAND: <strong class="text-color-dark">{{ product.brand }}</strong>
+                                                    </li>
+                                                {% endif %}
                                             </ul>
                                             <form enctype="multipart/form-data" method="post" class="cart">
                                                 <table class="table table-borderless" style="max-width: 300px;">
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="align-middle text-2 px-0 py-2">SIZE:</td>
-                                                            <td class="px-0 py-2">
-                                                                <div class="custom-select-1">
-                                                                    <select name="size" class="form-control form-select text-1 h-auto py-2">
-                                                                        <option value="">PLEASE CHOOSE</option>
-                                                                        <option value="blue">Small</option>
-                                                                        <option value="red">Normal</option>
-                                                                        <option value="green">Big</option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="align-middle text-2 px-0 py-2">COLOR:</td>
-                                                            <td class="px-0 py-2">
-                                                                <div class="custom-select-1">
-                                                                    <select name="color" class="form-control form-select text-1 h-auto py-2">
-                                                                        <option value="">PLEASE CHOOSE</option>
-                                                                        <option value="blue">Blue</option>
-                                                                        <option value="red">Red</option>
-                                                                        <option value="green">Green</option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                        {% for variation in product.variationscategory_set.all %}
+                                                            <tr>
+                                                                <td class="align-middle text-2 px-0 py-2">{{ variation.variation_name }}:</td>
+                                                                <td class="px-0 py-2">
+                                                                    <div class="custom-select-1">
+                                                                        <select name="size" class="form-control form-select text-1 h-auto py-2">
+                                                                            {% for var_choice in variation.variations_set.all %}
+                                                                                <option value="">{{ var_choice.variation_value|upper }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
                                                     </tbody>
                                                 </table>
                                                 <hr>

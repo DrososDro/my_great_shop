@@ -1,253 +1,146 @@
 <div class="col-lg-3 order-2 order-lg-1">
-    <aside class="sidebar">
-        <form action="page-search-results.html" method="get">
-            <div class="input-group mb-3 pb-1">
-                <input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text">
-                <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
+  <aside class="sidebar">
+    <form action="page-search-results.html" method="get">
+      <div class="input-group mb-3 pb-1">
+        <input
+          class="form-control text-1"
+          placeholder="Search..."
+          name="s"
+          id="s"
+          type="text"
+        />
+        <button type="submit" class="btn btn-dark text-1 p-2">
+          <i class="fas fa-search m-2"></i>
+        </button>
+      </div>
+    </form>
+    <h5 class="font-weight-semi-bold pt-3">Categories</h5>
+    <ul class="nav nav-list flex-column">
+      {% for category in list_of_categories %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ category.get_url }}"
+          >{{ category.name }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="row mb-5">
+      <div class="col-sm-4 col-lg-12">
+        <h5 class="font-weight-semi-bold pt-5">Recent Products</h5>
+        {% for product in recent_products %}
+        <div class="product row row-gutter-sm align-items-center mb-4">
+          <div class="col-5 col-lg-5">
+            <div class="product-thumb-info border-0">
+              <a href="#">
+                <div class="product-thumb-info-image">
+                  <img
+                    alt=""
+                    class="img-fluid"
+                    src="{{product.product_image_last}}"
+                  />
+                </div>
+              </a>
             </div>
-        </form>
-        <h5 class="font-weight-semi-bold pt-3">Categories</h5>
-        <ul class="nav nav-list flex-column">
-            <li class="nav-item"><a class="nav-link" href="#">Arts & Crafts</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Automotive</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Baby</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Books</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Eletronics</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Women's Fashion</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Men's Fashion</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Health & Household</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Home & Kitchen</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Military Accessories</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Movies & Television</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Sports & Outdoors</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Tools & Home Improvement</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Toys & Games</a></li>
-        </ul>
-        <h5 class="font-weight-semi-bold pt-5">Tags</h5>
-        <div class="mb-3 pb-1">
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Nike</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Travel</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Sport</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">TV</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Books</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Tech</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Adidas</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Promo</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Reading</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Social</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Books</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">Tech</span></a>
-            <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">New</span></a>
+          </div>
+          <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
+            <a
+              href="{{product.category.get_url}}"
+              class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2"
+              >{{product.category.name}}</a
+            >
+            <h3
+              class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"
+            >
+              <a
+                href="shop-product-sidebar-right.html"
+                class="text-color-dark text-color-hover-primary text-decoration-none"
+                >{{ product.product_id }}</a
+              >
+            </h3>
+            <div title="Rated 5 out of 5">
+              <input
+                type="text"
+                class="d-none"
+                value="5"
+                title=""
+                data-plugin-star-rating
+                data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}"
+              />
+            </div>
+            <p class="price text-4 mb-0">
+              {% if product.discount_offer %}
+              <span class="sale text-color-dark font-weight-semi-bold"
+                >${{ product.discount_price }}</span
+              >
+              <span class="amount">${{ product.price }}</span>
+              {% else %}
+              <span class="sale text-color-dark font-weight-semi-bold"
+                >${{ product.price }}</span
+              >
+              {% endif %}
+            </p>
+          </div>
         </div>
-        <div class="row mb-5">
-            <div class="col-sm-4 col-lg-12">
-                <h5 class="font-weight-semi-bold pt-5">Recent Products</h5>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-1.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">electronics</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Photo Camera</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$69,00</span>
-                            <span class="amount">$59,00</span>
-                        </p>
-                    </div>
+        {% endfor %}
+      </div>
+      <div class="col-sm-4 col-lg-12">
+        <h5 class="font-weight-semi-bold pt-5">Top Rated Products</h5>
+        {% for product in top_rated %}
+        <div class="product row row-gutter-sm align-items-center mb-4">
+          <div class="col-5 col-lg-5">
+            <div class="product-thumb-info border-0">
+              <a href="#">
+                <div class="product-thumb-info-image">
+                  <img
+                    alt=""
+                    class="img-fluid"
+                    src="{{product.product_image_last}}"
+                  />
                 </div>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image product-thumb-info-image-effect">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-7.jpg">
-                                        <img alt="" class="img-fluid" src="img/products/product-grey-7-2.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">accessories</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Porto Headphone</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
-                            <span class="amount">$99,00</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-2.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">sports</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Golf Bag</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$29,00</span>
-                            <span class="amount">$19,00</span>
-                        </p>
-                    </div>
-                </div>
+              </a>
             </div>
-            <div class="col-sm-4 col-lg-12">
-                <h5 class="font-weight-semi-bold pt-5">Last Viewed Products</h5>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-3.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">sports</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Workout</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$40,00</span>
-                            <span class="amount">$30,00</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-4.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">accessories</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Luxury Bag</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
-                            <span class="amount">$79,00</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-5.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">accessories</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Styled Bag</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$199,00</span>
-                            <span class="amount">$119,00</span>
-                        </p>
-                    </div>
-                </div>
+          </div>
+          <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
+            <a
+              href="{{product.category.get_url}}"
+              class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2"
+              >{{product.category.name}}</a
+            >
+            <h3
+              class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"
+            >
+              <a
+                href="shop-product-sidebar-right.html"
+                class="text-color-dark text-color-hover-primary text-decoration-none"
+                >{{ product.product_id }}</a
+              >
+            </h3>
+            <div title="Rated 5 out of 5">
+              <input
+                type="text"
+                class="d-none"
+                value="5"
+                title=""
+                data-plugin-star-rating
+                data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}"
+              />
             </div>
-            <div class="col-sm-4 col-lg-12">
-                <h5 class="font-weight-semi-bold pt-5">Top Rated Products</h5>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-6.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">hat</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Blue Hat</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$299,00</span>
-                            <span class="amount">$289,00</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-8.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">accessories</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Adventurer Bag</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$99,00</span>
-                            <span class="amount">$79,00</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="product row row-gutter-sm align-items-center mb-4">
-                    <div class="col-5 col-lg-5">
-                        <div class="product-thumb-info border-0">
-                            <a href="shop-product-sidebar-left.html">
-                                <div class="product-thumb-info-image">
-                                    <img alt="" class="img-fluid" src="img/products/product-grey-9.jpg">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
-                        <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">sports</a>
-                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary text-decoration-none">Baseball Ball</a></h3>
-                        <div title="Rated 5 out of 5">
-                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}">
-                        </div>
-                        <p class="price text-4 mb-0">
-                            <span class="sale text-color-dark font-weight-semi-bold">$399,00</span>
-                            <span class="amount">$299,00</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <p class="price text-4 mb-0">
+              {% if product.discount_offer %}
+              <span class="sale text-color-dark font-weight-semi-bold"
+                >${{ product.discount_price }}</span
+              >
+              <span class="amount">${{ product.price }}</span>
+              {% else %}
+              <span class="sale text-color-dark font-weight-semi-bold"
+                >${{ product.price }}</span
+              >
+              {% endif %}
+            </p>
+          </div>
         </div>
-    </aside>
+        {% endfor %}
+      </div>
+    </div>
+  </aside>
 </div>

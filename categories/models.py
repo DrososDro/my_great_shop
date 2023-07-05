@@ -1,6 +1,8 @@
 from django.db import models
 import uuid
 
+from django.urls import reverse
+
 # Create your models here.
 
 
@@ -12,5 +14,15 @@ class Category(models.Model):
         editable=False,
     )
     name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    category_slug = models.SlugField(max_length=200, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def get_url(self):
+        return reverse("category", kwargs={"slug": self.category_slug})

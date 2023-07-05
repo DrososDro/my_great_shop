@@ -8,3 +8,8 @@ from products.models import Product
 class Home(ListView):
     model = Product
     template_name = "products/shop3.html"
+
+
+class CategoryView(Home):
+    def get_queryset(self):
+        return self.model.objects.filter(category__category_slug=self.kwargs["slug"])
