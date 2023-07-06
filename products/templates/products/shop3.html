@@ -33,7 +33,7 @@
                                                 </div>
                                             </div>
                                         {% endif %}
-                                        <a href="#">
+                                        <a href="{{ product.product_url }}">
                                             <a class="quick-view popup-with-zoom-anim text-uppercase font-weight-semibold text-2"
                                                href="#{{ product.id }}">QUICK VIEW</a>
                                             <div class="product-thumb-info-image">
@@ -48,7 +48,8 @@
                                             <a href="{{ product.category.get_url }}"
                                                class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">{{ product.category.name }}</a>
                                             <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-                                                <a href="#" class="text-color-dark text-color-hover-primary">{{ product.product_id }}</a>
+                                                <a href="{{ product.product_url }}"
+                                                   class="text-color-dark text-color-hover-primary">{{ product.product_id }}</a>
                                             </h3>
                                         </div>
                                         <a href="#"
@@ -56,11 +57,11 @@
                                     </div>
                                     <div title="Rated 5 out of 5">
                                         <input type="text"
-                                               class="d-none"
+                                               class=""
                                                value="5"
                                                title=""
                                                data-plugin-star-rating
-                                               data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xl'}" />
+                                               data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}" />
                                     </div>
                                     <p class="price text-5 mb-3">
                                         {% if  product.discount_offer %}
@@ -101,24 +102,25 @@
                                         <div class="col-lg-6">
                                             <div class="summary entry-summary position-relative">
                                                 <h1 class="font-weight-bold text-7 mb-0">
-                                                    <a href="#"
+                                                    <a href="{{ product.product_url }}"
                                                        class="text-decoration-none text-color-dark text-color-hover-primary">{{ product.product_id }}</a>
                                                 </h1>
-                                                <h5 class="font-weight-bold text-3 mb-0">
-                                                    <a href="#"
-                                                       class="text-decoration-none text-color-dark text-color-hover-primary">{{ product.alternative_product_id|truncatewords:5 }}</a>
+                                                <h5 class=" text-4 mb-0">
+                                                    <a href="{{ product.product_url }}"
+                                                       class="text-decoration-none text-color-dark text-color-hover-primary">{{ product.alternative_product_ids|truncatewords:5 }}</a>
                                                 </h5>
+                                                <hr class="bg-color-grey-scale-4">
                                                 <div class="pb-0 clearfix d-flex align-items-center">
                                                     <div title="Rated 3 out of 5" class="float-start">
                                                         <input type="text"
-                                                               class="d-none"
+                                                               class=""
                                                                value="4"
                                                                title=""
                                                                data-plugin-star-rating
                                                                data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
                                                     </div>
                                                     <div class="review-num">
-                                                        <span class="count" itemprop="ratingCount">(2</span> reviews)
+                                                        <span class="count" itemprop="ratingCount">({{ product.total_votes }}</span> review{{ product.total_votes|pluralize:"s" }})
                                                     </div>
                                                 </div>
                                                 <div class="divider divider-small">
@@ -157,9 +159,10 @@
                                                                 <td class="align-middle text-2 px-0 py-2">{{ variation.variation_name }}:</td>
                                                                 <td class="px-0 py-2">
                                                                     <div class="custom-select-1">
-                                                                        <select name="size" class="form-control form-select text-1 h-auto py-2">
+                                                                        <select name="{{ variation.variation_name }}"
+                                                                                class="form-control form-select text-1 h-auto py-2">
                                                                             {% for var_choice in variation.variations_set.all %}
-                                                                                <option value="">{{ var_choice.variation_value|upper }}</option>
+                                                                                <option value="{{ var_choice.variation_value }}">{{ var_choice.variation_value|upper }}</option>
                                                                             {% endfor %}
                                                                         </select>
                                                                     </div>

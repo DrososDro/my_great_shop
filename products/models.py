@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from categories.models import Category
 
@@ -83,6 +84,15 @@ class Product(models.Model):
         except Exception:
             image = ""
         return image
+
+    def product_url(self):
+        return reverse(
+            "product",
+            kwargs={
+                "category_slug": self.category.category_slug,
+                "product_slug": self.product_slug,
+            },
+        )
 
 
 class MultipleProductImages(models.Model):

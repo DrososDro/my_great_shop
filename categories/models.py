@@ -25,4 +25,7 @@ class Category(models.Model):
 
     @property
     def get_url(self):
-        return reverse("category", kwargs={"slug": self.category_slug})
+        return reverse(
+            "category",
+            kwargs={"category_slug": self.category_slug},
+        )
