@@ -30,31 +30,34 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
     brand = models.CharField(max_length=200, blank=True, null=True)
-    # quantity and price
-    quantity = models.IntegerField(default=0)
-    price = models.FloatField(default=0)
-    price_b2b = models.FloatField(default=0)
-    is_available = models.BooleanField(default=False)
-    # offer
-    offer_duration = models.DateTimeField(null=True, blank=True, default=0)
-    offer_discount = models.IntegerField(null=True, blank=True, default=0)
-    discount = models.IntegerField(default=0)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     # rating
     total_star_ratio = models.FloatField(default=0)
     total_votes = models.IntegerField(default=0)
 
-    # package dimensions in mm
-    weight = models.IntegerField(default=0, null=True, blank=True)
-    height = models.IntegerField(default=0, null=True, blank=True)
-    width = models.IntegerField(default=0, null=True, blank=True)
-    depth = models.IntegerField(default=0, null=True, blank=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
     def __str__(self):
         return self.product_id
+
+    @property
+    def product_image_last(self):
+        try:
+            image = self.multipleproductimages_set.last().image.url or ""
+        except Exception:
+            image = ""
+        return image
+
+    def product_url(self):
+        return reverse(
+            "product",
+            kwargs={
+                "category_slug": self.category.category_slug,
+                "product_slug": self.product_slug,
+            },
+        )
+
+    """
 
     def discount_price(self):
         return (
@@ -77,22 +80,9 @@ class Product(models.Model):
     def discount_offer(self):
         return self.offer_discount if self.offer_lasts else self.discount
 
-    @property
-    def product_image_last(self):
-        try:
-            image = self.multipleproductimages_set.last().image.url or ""
-        except Exception:
-            image = ""
-        return image
 
-    def product_url(self):
-        return reverse(
-            "product",
-            kwargs={
-                "category_slug": self.category.category_slug,
-                "product_slug": self.product_slug,
-            },
-        )
+
+    """
 
 
 class MultipleProductImages(models.Model):

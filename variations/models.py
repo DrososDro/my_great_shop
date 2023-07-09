@@ -3,34 +3,28 @@ import uuid
 from products.models import Product
 
 
+VARIATION_CHOICES = (
+    ("color", "Color"),
+    ("size", "Size"),
+    ("material", "Material"),
+    ("contition", "Contition"),
+    ("product_origin", "Product Origin"),
+)
+
+
 class VariationsCategory(models.Model):
-    """here is the  variation_category
-    i do it this way:
-        the shop admin can add variation_categories for the products
-        different products have other variations
-        and can add what is the needs of the shop
-
-    """
-
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     id = models.UUIDField(
         default=uuid.uuid4,
         unique=True,
         primary_key=True,
         editable=False,
     )
-    variation_name = models.CharField(
-        max_length=200,
-        unique=True,
-        null=True,
-        blank=True,
-    )
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    variation_category = models.CharField(max_length=20, choices=VARIATION_CHOICES)
 
     def __str__(self):
-        return self.variation_name
+        return self.variation_category
 
 
 class Variations(models.Model):
@@ -47,10 +41,7 @@ class Variations(models.Model):
         primary_key=True,
         editable=False,
     )
-    variation_category = models.ForeignKey(
-        VariationsCategory,
-        on_delete=models.CASCADE,
-    )
+    variation_category = models.ForeignKey(VariationsCategory, on_delete=models.CASCADE)
     variation_value = models.CharField(max_length=200, unique=True)
     """
 

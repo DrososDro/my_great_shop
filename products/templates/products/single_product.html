@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+<div style="color:red; width:150px; height:150px;">
+  {{form}}
+</div>
     <div class="container">
         <div class="row">
             <!--side bar-->
-            {% include "products/sidebar.html" %}
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="row">
                     <div class="col-lg-6">
@@ -79,36 +81,26 @@
                                   method="post"
                                   class="cart"
                                   action="shop-cart.html">
-                                <table class="table table-borderless" style="max-width: 300px;">
-                                    <tbody>
-                                        <tr>
-                                            <td class="align-middle text-2 px-0 py-2">SIZE:</td>
-                                            <td class="px-0 py-2">
-                                                <div class="custom-select-1">
-                                                    <select name="size" class="form-control form-select text-1 h-auto py-2">
-                                                        <option value="">PLEASE CHOOSE</option>
-                                                        <option value="blue">Small</option>
-                                                        <option value="red">Normal</option>
-                                                        <option value="green">Big</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-middle text-2 px-0 py-2">COLOR:</td>
-                                            <td class="px-0 py-2">
-                                                <div class="custom-select-1">
-                                                    <select name="color" class="form-control form-select text-1 h-auto py-2">
-                                                        <option value="">PLEASE CHOOSE</option>
-                                                        <option value="blue">Blue</option>
-                                                        <option value="red">Red</option>
-                                                        <option value="green">Green</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                  <!--table-->
+                                                <table class="table table-borderless" style="max-width: 300px;">
+                                                    <tbody>
+                                                        {% for variation in object.variationscategory_set.all %}
+                                                            <tr>
+                                                                <td class="align-middle text-2 px-0 py-2">{{ variation.variation_name }}:</td>
+                                                                <td class="px-0 py-2">
+                                                                    <div class="custom-select-1">
+                                                                        <select name="{{ variation.variation_name }}"
+                                                                                class="form-control form-select text-1 h-auto py-2">
+                                                                            {% for var_choice in variation.variations_set.all %}
+                                                                                <option value="{{ var_choice.variation_value }}">{{ var_choice.variation_value|upper }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
                                 <hr>
                                 <div class="quantity quantity-lg">
                                     <input type="button"
@@ -389,4 +381,26 @@
             </div>
         </div>
     </div>
+<script>
+const selectElements = document.querySelectorAll("select");
+const selectDataList = [];
+
+selectElements.forEach((select) => {
+  const selectData = {
+    id: select.id,
+    value: select.value
+  };
+
+  selectDataList.push(selectData);
+
+  select.addEventListener('change', () => {
+    selectData.value = select.value;
+    console.log(`${selectData.id} changed:`, selectData.value);
+  });
+});
+
+console.log(selectDataList);
+
+  </script>
+
 {% endblock content %}
