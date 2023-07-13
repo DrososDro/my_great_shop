@@ -6,7 +6,6 @@ from django.utils import timezone
 
 
 class ProductAttrs(models.Model):
-    CONDITION_ = (("new", "New"), ("used", "Used"))
     id = models.UUIDField(
         default=uuid.uuid4, editable=False, unique=True, primary_key=True
     )
@@ -25,7 +24,13 @@ class ProductAttrs(models.Model):
         blank=True,
         null=True,
     )
-    condition = models.CharField(max_length=25, choices=CONDITION_, default="new")
+    condition = models.ForeignKey(
+        Variations,
+        on_delete=models.CASCADE,
+        related_name="condition",
+        blank=True,
+        null=True,
+    )
     material = models.ForeignKey(
         Variations,
         on_delete=models.CASCADE,
