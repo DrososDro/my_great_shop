@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
+    <div class="container" onclick="singleProductAjax()">
         <div class="row">
             <!--side bar-->
             {% include "products/includes/sidebar.html" %}
@@ -78,21 +78,24 @@
                                   method="post"
                                   class="cart"
                                   onclick="singleProductAjax()"
+                                  onload="callAjaxReq()"
                                   action="shop-cart.html">
                                 <!--table-->
                                 {% csrf_token %}
-                                <table class="table table-borderless" style="max-width: 300px;">
-                                    <tbody>
-                                        {% for field in form %}
-                                            <tr>
-                                                <td class="align-middle text-2 px-0 py-2">{{ field.label }}:</td>
-                                                <td class="px-0 py-2">
-                                                    <div class="custom-select-1">{{ field }}</div>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                                {% if form %}
+                                    <table class="table table-borderless" style="max-width: 300px;">
+                                        <tbody>
+                                            {% for field in form %}
+                                                <tr>
+                                                    <td class="align-middle text-2 px-0 py-2">{{ field.label }}:</td>
+                                                    <td class="px-0 py-2">
+                                                        <div class="custom-select-1">{{ field }}</div>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% endif %}
                                 <hr>
                                 <div class="quantity quantity-lg">
                                     <input type="button"
@@ -114,7 +117,6 @@
                                 </div>
                                 <button type="submit"
                                         id="button"
-                                        disabled
                                         class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">
                                     Add
                                     to cart
@@ -225,4 +227,10 @@
             </div>
         </div>
     </div>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Your function code here
+    AjaxReq(dataList="");
+  });
+    </script>
 {% endblock content %}
