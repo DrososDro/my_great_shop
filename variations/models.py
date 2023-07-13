@@ -21,10 +21,10 @@ class VariationsCategory(models.Model):
     )
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    variation_category = models.CharField(max_length=20, choices=VARIATION_CHOICES)
+    name = models.CharField(max_length=20, choices=VARIATION_CHOICES)
 
     def __str__(self):
-        return self.variation_category
+        return self.name
 
 
 class Variations(models.Model):
@@ -41,7 +41,10 @@ class Variations(models.Model):
         primary_key=True,
         editable=False,
     )
-    variation_category = models.ForeignKey(VariationsCategory, on_delete=models.CASCADE)
+    variation_category = models.ForeignKey(
+        VariationsCategory,
+        on_delete=models.CASCADE,
+    )
     variation_value = models.CharField(max_length=200, unique=True)
     """
 

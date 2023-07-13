@@ -2,9 +2,11 @@ from django.db import models
 import uuid
 from products.models import Product
 from variations.models import Variations
+from django.utils import timezone
 
 
 class ProductAttrs(models.Model):
+    CONDITION_ = (("new", "New"), ("used", "Used"))
     id = models.UUIDField(
         default=uuid.uuid4, editable=False, unique=True, primary_key=True
     )
@@ -23,13 +25,7 @@ class ProductAttrs(models.Model):
         blank=True,
         null=True,
     )
-    condition = models.ForeignKey(
-        Variations,
-        on_delete=models.CASCADE,
-        related_name="condition",
-        blank=True,
-        null=True,
-    )
+    condition = models.CharField(max_length=25, choices=CONDITION_, default="new")
     material = models.ForeignKey(
         Variations,
         on_delete=models.CASCADE,
@@ -52,7 +48,6 @@ class ProductAttrs(models.Model):
     # offer
     offer_duration = models.DateTimeField(null=True, blank=True, default=0)
     offer_discount = models.IntegerField(null=True, blank=True, default=0)
-    discount = models.IntegerField(default=0)
 
     # package dimensions in mm
     weight = models.IntegerField(default=0, null=True, blank=True)
@@ -60,3 +55,19 @@ class ProductAttrs(models.Model):
     width = models.IntegerField(default=0, null=True, blank=True)
     depth = models.IntegerField(default=0, null=True, blank=True)
 
+    class Meta:
+        ordering = ["price"]
+
+    def offer_duration_(self):
+        return self.offer_duration and self.offer_duration > timezone.now()
+
+    def discount_price(self):
+        discount_price = ""
+        if self.offer_duration_:
+            discount_price = self.price - (self.price * self.offer_discount / 100)
+        else:
+            self.offer_duration = None
+            self.offer_discount = 0
+            self.save()
+
+        return discount_price, self.price

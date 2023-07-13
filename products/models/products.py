@@ -57,32 +57,16 @@ class Product(models.Model):
             },
         )
 
-    """
+    def product_start_price(self):
+        return self.productattrs_set.first().price
 
-    def discount_price(self):
-        return (
-            self.price - (self.price * self.discount_offer() / 100)
-            if self.discount_price
-            else self.price
-        )
+    def product_offer_duration(self):
+        return self.productattrs_set.order_by("offer_duration").last().offer_duration
 
-    def discount_price_b2b(self):
-        pass
-
-    def offer_lasts(self):
-        now = timezone.now()
-        return (
-            self.offer_duration
-            if self.offer_duration and self.offer_duration > now
-            else 0
-        )
-
-    def discount_offer(self):
-        return self.offer_discount if self.offer_lasts else self.discount
-
-
-
-    """
+    def product_discount(self):
+        product = self.productattrs_set.order_by("offer_discount").last()
+        if product.offer_duration and product.offer_duration > timezone.now():
+            return product.offer_discount
 
 
 class MultipleProductImages(models.Model):
