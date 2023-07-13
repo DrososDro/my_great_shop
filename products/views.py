@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 from django.http import JsonResponse
 from django.views.generic import DetailView, ListView
 from products.models import Product
@@ -24,6 +23,7 @@ class CategoryView(Home):
 class ProductView(DetailView):
     model = Product
     template_name = "products/single_product.html"
+    test = 1
 
     def get_object(self, queryset=None):
         return self.model.objects.get(product_slug=self.kwargs["product_slug"])
@@ -62,7 +62,6 @@ class ProductView(DetailView):
                 offer = f"{product.offer_discount}% off "
                 price = f"{price_}$"
                 discount_price = f"{discount_price_}$"
-
             if product.quantity:
                 quantity = product.quantity
 
