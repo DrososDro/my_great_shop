@@ -1,0 +1,86 @@
+<div class="col-lg-3 order-2 order-lg-1">
+  <aside class="sidebar">
+    <form action="page-search-results.html" method="get">
+      <div class="input-group mb-3 pb-1">
+        <input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text" />
+        <button type="submit" class="btn btn-dark text-1 p-2">
+          <i class="fas fa-search m-2"></i>
+        </button>
+      </div>
+    </form>
+    <h5 class="font-weight-semi-bold pt-3">Categories</h5>
+    <ul class="nav nav-list flex-column">
+      {% for category in list_of_categories %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ category.get_url }}">{{ category.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="row mb-5">
+      <div class="col-sm-4 col-lg-12">
+        <h5 class="font-weight-semi-bold pt-5">Recent Products</h5>
+        {% for product in recent_products %}
+        <div class="product row row-gutter-sm align-items-center mb-4">
+          <div class="col-5 col-lg-5">
+            <div class="product-thumb-info border-0">
+              <a href="{{ product.product_url }}">
+                <div class="product-thumb-info-image">
+                  <img alt="" class="img-fluid" src="{{ product.product_image_last }}" />
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
+            <a href="{{ product.category.get_url }}"
+              class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">
+              {{ product.category.name }}</a>
+            <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+              <a href="{{ product.product_url }}" class="text-color-dark text-color-hover-primary text-decoration-none">
+                {{ product.product_id }}</a>
+            </h3>
+            <div title="Rated 5 out of 5">
+              <input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+                data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}" />
+            </div>
+            <p class="price text-4 mb-0">
+              <span class="sale text-color-dark font-weight-semi-bold">From {{ product.product_start_price }}$</span>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-sm-4 col-lg-12">
+        <h5 class="font-weight-semi-bold pt-5">Top Rated Products</h5>
+        {% for product in top_rated %}
+        <div class="product row row-gutter-sm align-items-center mb-4">
+          <div class="col-5 col-lg-5">
+            <div class="product-thumb-info border-0">
+              <a href="{{ product.product_url }}">
+                <div class="product-thumb-info-image">
+                  <img alt="" class="img-fluid" src="{{ product.product_image_last }}" />
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-7 col-lg-7 ms-md-0 ms-lg-0 ps-lg-1 pt-1">
+            <a href="{{ product.category.get_url }}"
+              class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-2">
+              {{ product.category.name }}</a>
+            <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+              <a href="{{ product.product_url }}"
+                class="text-color-dark text-color-hover-primary text-decoration-none">{{ product.product_id }}</a>
+            </h3>
+            <div title="Rated 5 out of 5">
+              <input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+                data-plugin-options="{'displayOnly': true, 'color': 'dark', 'size':'xs'}" />
+            </div>
+            <p class="price text-4 mb-0">
+              <span class="sale text-color-dark font-weight-semi-bold">From {{ product.product_start_price }}$</span>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </aside>
+</div>

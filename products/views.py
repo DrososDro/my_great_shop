@@ -1,11 +1,10 @@
+import json
+from datetime import datetime
 from django.http import JsonResponse
-from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import DetailView, ListView
 from products.models import Product
 from products.models.product_attritubes import ProductAttrs
-from variations.models import Variations, VariationsCategory
 from products.forms import ProductForm
-from django.core import serializers
 
 # Create your views here.
 
@@ -31,20 +30,51 @@ class ProductView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        x = self.object.variationscategory_set.all()  # .objects.variations_set.all()
-        # x = self.object.productattrs_set.all()
-        for i in x:
-            print(i)
-        print(x)
+
+        context["form"] = ProductForm(product_slug=self.object.product_slug)
         return context
 
+    def post(self, *args, **kwargs):
+        data_dict = {
+            i["name"]: i["value"]
+            for i in json.loads(self.request.body)
+            if i["value"] != ""
+        }
 
-def product_view(request, category_slug, product_slug):
-    product = Product.objects.get(product_slug=product_slug)
-    form = ProductForm(product_slug=product_slug)
-    attrs = ProductAttrs.objects.filter(product=product)
-    data = serializers.serialize("json", attrs)
-    attrs = JsonResponse(data, safe=False)
+        price = ""
+        offer = ""
+        offer_duration = ""
+        quantity = "Out of Stock"
+        discount_price = ""
 
-    context = {"object": product, "form": form, "attrs": attrs}
-    return render(request, "products/single_product.html", context)
+        try:
+            product = ProductAttrs.objects.get(
+                product__product_slug=kwargs["product_slug"], **data_dict
+            )
+            price = f"{product.price}$"
+
+            if product.offer_duration_():
+                price_, discount_price_ = product.discount_price()
+
+                offer_duration = (
+                    f" Until {product.offer_duration.strftime('%d-%m-%Y %H:%M')}"
+                )
+                offer = f"{product.offer_discount}% off "
+                price = f"{price_}$"
+                discount_price = f"{discount_price_}$"
+
+            if product.quantity:
+                quantity = product.quantity
+
+        except Exception:
+            pass
+
+        return JsonResponse(
+            {
+                "price": price,
+                "offer": offer,
+                "offer_duration": offer_duration,
+                "quantity": quantity,
+                "discount_price": discount_price,
+            }
+        )

@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<div style="color:red; width:150px; height:150px;">
-  {{form}}
-</div>
     <div class="container">
         <div class="row">
             <!--side bar-->
+            {% include "products/includes/sidebar.html" %}
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="row">
                     <div class="col-lg-6">
@@ -33,8 +31,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="summary entry-summary position-relative">
-                <h1 class="mb-0 font-weight-bold text-7">{{object.product_id}}</h1>
-                <h2 class="mb-0 font-weight-bold text-5">{{object.alternative_product_ids}}</h2>
+                            <h1 class="mb-0 font-weight-bold text-7">{{ object.product_id }}</h1>
+                            <h2 class="mb-0 font-weight-bold text-5">{{ object.alternative_product_ids|default_if_none:"" }}</h2>
                             <div class="pb-0 clearfix d-flex align-items-center">
                                 <div title="Rated 3 out of 5" class="float-start">
                                     <input type="text"
@@ -42,7 +40,7 @@
                                            value="3"
                                            title=""
                                            data-plugin-star-rating
-                                           data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
+                                           data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'s'}">
                                 </div>
                                 <div class="review-num">
                                     <a href="#description"
@@ -52,55 +50,49 @@
                                        data-hash-offset-lg="75"
                                        data-hash-trigger-click=".nav-link-reviews"
                                        data-hash-trigger-click-delay="1000">
-                      <span class="count text-color-inherit" itemprop="ratingCount">({{object.total_votes}}</span>
-                      review{{product.total_votes|pluralize:"s"}})
+                                        <span class="count text-color-inherit" itemprop="ratingCount">({{ object.total_votes }}</span>
+                                        review{{ product.total_votes|pluralize:"s" }})
                                     </a>
                                 </div>
                             </div>
                             <div class="divider divider-small">
                                 <hr class="bg-color-grey-scale-4">
                             </div>
+                            <span class="sale" id="offer"></span>
+                            <span class="sale" id="offer_duration"></span>
                             <p class="price mb-3">
-                                <span class="sale text-color-dark">$15,00</span>
-                                <span class="amount">$22,00</span>
-                            </p>
-                            <p class="text-3-5 mb-3">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. Lorem ipsum
-                                dolor sit amet.
+                                <span class="sale text-color-dark" id="price"></span>
+                                <span class="amount" id="discount_price"></span>
                             </p>
                             <ul class="list list-unstyled text-2">
                                 <li class="mb-0">
-                                    AVAILABILITY: <strong class="text-color-dark">AVAILABLE</strong>
+                                    AVAILABILITY: <strong id="quantity" class="text-color-dark"></strong>
                                 </li>
-                                <li class="mb-0">
-                                    SKU: <strong class="text-color-dark">1234567890</strong>
-                                </li>
+                                {% if object.brand %}
+                                    <li class="mb-0">
+                                        BRAND: <strong class="text-color-dark">{{ object.brand }}</strong>
+                                    </li>
+                                {% endif %}
                             </ul>
                             <form enctype="multipart/form-data"
                                   method="post"
                                   class="cart"
+                                  onclick="singleProductAjax()"
                                   action="shop-cart.html">
-                  <!--table-->
-                                                <table class="table table-borderless" style="max-width: 300px;">
-                                                    <tbody>
-                                                        {% for variation in object.variationscategory_set.all %}
-                                                            <tr>
-                                                                <td class="align-middle text-2 px-0 py-2">{{ variation.variation_name }}:</td>
-                                                                <td class="px-0 py-2">
-                                                                    <div class="custom-select-1">
-                                                                        <select name="{{ variation.variation_name }}"
-                                                                                class="form-control form-select text-1 h-auto py-2">
-                                                                            {% for var_choice in variation.variations_set.all %}
-                                                                                <option value="{{ var_choice.variation_value }}">{{ var_choice.variation_value|upper }}</option>
-                                                                            {% endfor %}
-                                                                        </select>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        {% endfor %}
-                                                    </tbody>
-                                                </table>
+                                <!--table-->
+                                {% csrf_token %}
+                                <table class="table table-borderless" style="max-width: 300px;">
+                                    <tbody>
+                                        {% for field in form %}
+                                            <tr>
+                                                <td class="align-middle text-2 px-0 py-2">{{ field.label }}:</td>
+                                                <td class="px-0 py-2">
+                                                    <div class="custom-select-1">{{ field }}</div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                                 <hr>
                                 <div class="quantity quantity-lg">
                                     <input type="button"
@@ -108,16 +100,21 @@
                                            value="-">
                                     <input type="text"
                                            class="input-text qty text"
+                                           id="product_quantity"
                                            title="Qty"
                                            value="1"
                                            name="quantity"
+                                           max=""
                                            min="1"
                                            step="1">
                                     <input type="button"
+                                           max="10"
                                            class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
                                            value="+">
                                 </div>
                                 <button type="submit"
+                                        id="button"
+                                        disabled
                                         class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">
                                     Add
                                     to cart
@@ -201,175 +198,22 @@
                             </ul>
                             <div class="tab-content p-0">
                                 <div class="tab-pane px-0 py-3 active" id="productDescription">
-                                    <p>
-                                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                                        cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta
-                                        nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum
-                                        lobortis dapibus.
-                                    </p>
-                                    <p class="m-0">
-                                        Vestibulum ante ipsum primis in faucibus orci luctus et
-                                        ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Fusce sagittis, massa fringilla consequat blandit,
-                                        mauris ligula porta nisi, non tristique enim sapien vel nisl.
-                                        Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in
-                                        faucibus orci luctus et ultrices posuere cubilia Curae;
-                                    </p>
+                                    <p class="text-3-5 mb-3">{{ object.description|linebreaksbr }}</p>
                                 </div>
                                 <div class="tab-pane px-0 py-3" id="productInfo">
                                     <table class="table table-striped m-0">
-                                        <tbody>
-                                            <tr>
-                                                <th class="border-top-0">Size:</th>
-                                                <td class="border-top-0">Unique</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Colors</th>
-                                                <td>Red, Blue</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Material</th>
-                                                <td>100% Leather</td>
-                                            </tr>
+                                        <tbody class="border-top-0">
+                                            {% for var_cat in object.variationscategory_set.all %}
+                                                <tr>
+                                                    <th class="border-top-0">{{ var_cat.name|title }}:</th>
+                                                    <td class="border-top-0">{{ var_cat.variations_set.all|join:', '|upper }}</td>
+                                                </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane px-0 py-3" id="productReviews">
-                                    <ul class="comments">
-                                        <li>
-                                            <div class="comment">
-                                                <div class="img-thumbnail border-0 p-0 d-none d-md-block">
-                                                    <img class="avatar rounded-circle" alt="" src="img/avatars/avatar-2.jpg">
-                                                </div>
-                                                <div class="comment-block">
-                                                    <div class="comment-arrow"></div>
-                                                    <span class="comment-by">
-                                                        <strong>Jack Doe</strong>
-                                                        <span class="float-end">
-                                                            <div class="pb-0 clearfix">
-                                                                <div title="Rated 3 out of 5" class="float-start">
-                                                                    <input type="text"
-                                                                           class="d-none"
-                                                                           value="3"
-                                                                           title=""
-                                                                           data-plugin-star-rating
-                                                                           data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
-                                                                </div>
-                                                                <div class="review-num">
-                                                                    <span class="count" itemprop="ratingCount">2</span> reviews
-                                                                </div>
-                                                            </div>
-                                                        </span>
-                                                    </span>
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Nam viverra euismod odio, gravida pellentesque urna
-                                                        varius vitae, gravida pellentesque urna varius vitae.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="comment">
-                                                <div class="img-thumbnail border-0 p-0 d-none d-md-block">
-                                                    <img class="avatar rounded-circle" alt="" src="img/avatars/avatar.jpg">
-                                                </div>
-                                                <div class="comment-block">
-                                                    <div class="comment-arrow"></div>
-                                                    <span class="comment-by">
-                                                        <strong>John Doe</strong>
-                                                        <span class="float-end">
-                                                            <div class="pb-0 clearfix">
-                                                                <div title="Rated 3 out of 5" class="float-start">
-                                                                    <input type="text"
-                                                                           class="d-none"
-                                                                           value="3"
-                                                                           title=""
-                                                                           data-plugin-star-rating
-                                                                           data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
-                                                                </div>
-                                                                <div class="review-num">
-                                                                    <span class="count" itemprop="ratingCount">2</span> reviews
-                                                                </div>
-                                                            </div>
-                                                        </span>
-                                                    </span>
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Nam viverra odio, gravida urna varius vitae, gravida
-                                                        pellentesque urna varius vitae.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <hr class="solid my-5">
-                                    <h4>Add a review</h4>
-                                    <div class="row">
-                                        <div class="col">
-                                            <form action="" id="submitReview" method="post">
-                                                <div class="row">
-                                                    <div class="form-group col pb-2">
-                                                        <label class="form-label required font-weight-bold text-dark">Rating</label>
-                                                        <input type="text"
-                                                               class="rating-loading"
-                                                               value="0"
-                                                               title=""
-                                                               data-plugin-star-rating
-                                                               data-plugin-options="{'color': 'primary', 'size':'sm'}">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-6">
-                                                        <label class="form-label required font-weight-bold text-dark">Name</label>
-                                                        <input type="text"
-                                                               value=""
-                                                               data-msg-required="Please enter your name."
-                                                               maxlength="100"
-                                                               class="form-control"
-                                                               name="name"
-                                                               required>
-                                                    </div>
-                                                    <div class="form-group col-lg-6">
-                                                        <label class="form-label required font-weight-bold text-dark">
-                                                            Email
-                                                            Address
-                                                        </label>
-                                                        <input type="email"
-                                                               value=""
-                                                               data-msg-required="Please enter your email address."
-                                                               data-msg-email="Please enter a valid email address."
-                                                               maxlength="100"
-                                                               class="form-control"
-                                                               name="email"
-                                                               required>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col">
-                                                        <label class="form-label required font-weight-bold text-dark">Review</label>
-                                                        <textarea maxlength="5000"
-                                                                  data-msg-required="Please enter your review."
-                                                                  rows="8"
-                                                                  class="form-control"
-                                                                  name="review"
-                                                                  id="review"
-                                                                  required></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col mb-0">
-                                                        <input type="submit"
-                                                               value="Post Review"
-                                                               class="btn btn-primary btn-modern"
-                                                               data-loading-text="Loading...">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--comments-->
+                                {% include "products/includes/reviews.html" %}
                             </div>
                         </div>
                     </div>
@@ -381,26 +225,4 @@
             </div>
         </div>
     </div>
-<script>
-const selectElements = document.querySelectorAll("select");
-const selectDataList = [];
-
-selectElements.forEach((select) => {
-  const selectData = {
-    id: select.id,
-    value: select.value
-  };
-
-  selectDataList.push(selectData);
-
-  select.addEventListener('change', () => {
-    selectData.value = select.value;
-    console.log(`${selectData.id} changed:`, selectData.value);
-  });
-});
-
-console.log(selectDataList);
-
-  </script>
-
 {% endblock content %}

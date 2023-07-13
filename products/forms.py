@@ -1,6 +1,5 @@
 from django import forms
-
-from products.models import Product, ProductAttrs
+from products.models import Product
 from variations.models import Variations
 
 
@@ -18,9 +17,14 @@ class ProductForm(forms.Form):
                 variations_dict[var_cat] = x
 
             for cat, choises in variations_dict.items():
-                self.fields[cat.variation_category] = forms.ModelChoiceField(
-                    queryset=choises
+                self.fields[cat.name] = forms.ModelChoiceField(
+                    queryset=choises,
                 )
 
         else:
             raise ValueError
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update(
+                {"class": "form-control form-select text-1 h-auto py-2"}
+            )
