@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="container">
+    <div class="container-xxl">
         <div class="row">
             {% include "products/includes/sidebar.html" %}
             <div class="col-lg-9 order-1 order-lg-2">
@@ -63,9 +63,7 @@
                             <!--end of single product-->
                         {% endfor %}
                     </div>
-                    {% if pages %}
-                        {% include "includes/pagination.html" %}
-                    {% endif %}
+                    {% include "includes/pagination.html" %}
                 </div>
             </div>
         </div>

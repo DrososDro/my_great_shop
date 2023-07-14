@@ -111,17 +111,46 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-color-light text-2 font-weight-semibold"
                                            target="_blank"
-                                           href="https://www.okler.net/open-a-ticket/">Support</a>
+                                           href="#">
+                                            <i class="fas fa-heart"></i>
+                                        wishlist</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-color-light text-2 font-weight-semibold"
-                                           target="_blank"
-                                           href="https://www.okler.net/previews/porto/docs/">Documentation</a>
-                                    </li>
+                                    {% if request.user.is_authenticated %}
+                                        <li class="nav-item">
+                                            <ul class="nav nav-pills">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link text-color-light text-2 font-weight-semibold"
+                                                       href="#"
+                                                       role="button"
+                                                       id="dropdownLanguage"
+                                                       data-bs-toggle="dropdown"
+                                                       aria-haspopup="true"
+                                                       aria-expanded="false">
+                                                        <i class="fas fa-gear"></i>
+                                                        {{ request.user.full_name|title }}
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end text-2"
+                                                         aria-labelledby="dropdownLanguage">
+                                                        <a class="dropdown-item text-color-default" href="{% url 'logout' %}">Sing Out</a>
+                                                        <a class="dropdown-item text-color-default"
+                                                           href="{{ request.user.account_url }}">
+                                                            <i class="fas fa-gear"></i>
+                                                        User Profile</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    {% else %}
+                                        <li class="nav-item">
+                                            <a class="nav-link text-color-light text-2 font-weight-semibold"
+                                               href="{% url 'login' %}">
+                                                <i class="fas fa-right-to-bracket"></i>
+                                                Sing
+                                            In</a>
+                                        </li>
+                                    {% endif %}
                                 </ul>
-                                <a class="btn btn-primary font-weight-semibold text-3 py-3 border-radius p-relative bottom-1 custom-header-1-btn-1 btn-gradient"
-                                   href=""
-                                   target="_blank"><span class="px-4 d-block ws-nowrap">Buy Now</span></a>
+                                <!-- <a class="btn btn-primary font-weight-semibold text-3 py-3 border-radius p-relative bottom-1 custom-header-1-btn-1 btn-gradient" href="" target="_blank"><span class="px-4 d-block ws-nowrap">Buy Now</span></a> -->
                             </div>
                             <button class="btn header-btn-collapse-nav"
                                     data-bs-toggle="collapse"
@@ -143,28 +172,7 @@
                             <div class="d-none d-xl-inline-block">
                                 <span class="text-color-light text-color-hover-primary text-2">Mon — Sat: 9AM — 6PM</span>
                             </div>
-                            <div class="ms-auto d-none d-lg-inline-block">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link text-2 p-0 text-color-light"
-                                           href="#"
-                                           role="button"
-                                           id="dropdownLanguage"
-                                           data-bs-toggle="dropdown"
-                                           aria-haspopup="true"
-                                           aria-expanded="false">
-                                            english
-                                            <i class="fas fa-angle-down"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end text-2"
-                                             aria-labelledby="dropdownLanguage">
-                                            <a class="dropdown-item text-color-default" href="#">Español</a>
-                                            <a class="dropdown-item text-color-default" href="#">Française</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="vr opacity-4 d-none d-lg-inline-block"></div>
+                            <div class="ms-auto d-none d-lg-inline-block"></div>
                             <div class="d-none d-lg-inline-block">
                                 <ul class="nav nav-pills me-1">
                                     <li class="nav-item pe-2 mx-1">
