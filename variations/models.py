@@ -45,7 +45,7 @@ class Variations(models.Model):
         VariationsCategory,
         on_delete=models.CASCADE,
     )
-    variation_value = models.CharField(max_length=200, unique=True)
+    variation_value = models.CharField(max_length=200)
     """
 
     is_active = models.BooleanField(default=True)
@@ -55,6 +55,10 @@ class Variations(models.Model):
     discount = models.IntegerField(default=0, null=True, blank=True)
 
     """
+
+    class Meta:
+        unique_together = [["variation_category", "variation_value"]]
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
