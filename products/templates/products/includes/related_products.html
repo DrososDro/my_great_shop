@@ -1,0 +1,59 @@
+<h4 class="mb-3">
+  Related <strong>Products</strong>
+</h4>
+<div class="products row">
+  <div class="col">
+    <div class="owl-carousel owl-theme show-nav-title nav-dark mb-0"
+      data-plugin-options="{'loop': false, 'autoplay': true,'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true}">
+      <!--product start fr0m here-->
+      {% for product in related_products %}
+      <div class="product mb-0">
+        <div class="product-thumb-info border-0 mb-3">
+          <div class="product-thumb-info-badges-wrapper">
+            {% if product.product_discount %}
+            <span class="badge badge-ecommerce badge-danger">up to {{ product.product_discount }}% OFF</span>
+            {% endif %}
+          </div>
+          {% if product.product_discount %}
+          <div class="countdown-offer-wrapper">
+            <div class="text-color-light negative-ls-05 text-2" data-plugin-countdown
+              data-plugin-options="{'textDay': 'DAYS', 'textHour': 'HRS', 'textMin': 'MIN', 'textSec': 'SEC', 'date': '{{ product.product_offer_duration|date:"
+              Y/m/d G:i:s" }}', 'numberClass' : 'text-color-light' , 'wrapperClass' : 'text-color-light'
+              , 'insertHTMLbefore' : '<span>OFFER ENDS IN </span>' , 'textDay' : 'DAYS' , 'textHour' : ':' , 'textMin'
+              : ':' , 'textSec' : '' , 'uppercase' : true}">
+            </div>
+          </div>
+          {% endif %}
+          <a href="{{ product.product_url }}">
+            <div class="product-thumb-info-image">
+              <img alt="{{ product.product_id }}" class="img-fluid" src="{{ product.product_image_last }}" />
+            </div>
+          </a>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <a href="{{ product.category.get_url }}"
+              class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">
+              {{ product.category.name }}</a>
+            <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+              <a href="{{ product.product_url }}" class="text-color-dark text-color-hover-primary">
+                {{ product.product_id }}
+              </a>
+            </h3>
+          </div>
+          <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i
+              class="far fa-heart"></i></a>
+        </div>
+        <div title="Rated 5 out of 5">
+          <input type="text" value="5" title="" data-plugin-star-rating
+            data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}" />
+        </div>
+        <p class="price text-5 mb-3">
+          <span class="sale text-color-dark font-weight-semi-bold">From {{ product.product_start_price }}$</span>
+        </p>
+      </div>
+      {% endfor %}
+      <!--product end here-->
+    </div>
+  </div>
+</div>

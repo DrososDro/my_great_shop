@@ -37,6 +37,9 @@ class Product(models.Model):
     total_star_ratio = models.FloatField(default=0)
     total_votes = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ["total_star_ratio", "created_at"]
+
     def __str__(self):
         return self.product_id
 

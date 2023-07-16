@@ -1,3 +1,4 @@
+from os import walk
 from products.models import Product
 
 
@@ -16,3 +17,14 @@ def top_rated_products(request):
             "-created_at",
         )[:3],
     }
+
+
+def related_products(request, category_slug=None):
+    category_slug = request.resolver_match.kwargs.get("category_slug")
+    if category_slug:
+        return {
+            "related_products": Product.objects.filter(
+                category__category_slug=category_slug,
+            )[:10]
+        }
+    return {}

@@ -74,6 +74,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "categories.context_processors.list_of_categories",
                 "products.context_processors.recent_products",
+                "products.context_processors.related_products",
                 "products.context_processors.top_rated_products",
             ],
         },
