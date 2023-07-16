@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from categories.models import Category
+from django.templatetags.static import static
 
 
 # Create your models here.
@@ -46,9 +47,11 @@ class Product(models.Model):
     @property
     def product_image_last(self):
         try:
-            image = self.multipleproductimages_set.last().image.url or ""
+            image = self.multipleproductimages_set.last().image.url or static(
+                "default_images/404.jpg"
+            )
         except Exception:
-            image = ""
+            image = static("default_images/404.jpg")
         return image
 
     def product_url(self):
@@ -84,4 +87,4 @@ class MultipleProductImages(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def image_url(self):
-        return self.image.url or ""
+        return self.image.url or static("default_images/404.jpg")

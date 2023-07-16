@@ -1,6 +1,7 @@
 from django.db import models
 from account.models import Account
 import uuid
+from django.templatetags.static import static
 
 
 class MultipleImages(models.Model):
@@ -21,7 +22,7 @@ class MultipleImages(models.Model):
         return str(self.image_name)
 
     def image_url(self):
-        return self.image_name.url or ""
+        return self.image_name.url or static("default_images/404.jpg")
 
 
 class BillingAdress(models.Model):
