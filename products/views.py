@@ -11,6 +11,7 @@ from products.forms import ProductForm
 class Home(ListView):
     model = Product
     template_name = "products/shop3.html"
+    paginate_by = 12
 
 
 class CategoryView(Home):

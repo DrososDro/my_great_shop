@@ -38,7 +38,6 @@ function singleProductAjax() {
       value: select.value,
     }
     selectDataList.push(selectData)
-    console.log(selectElements.length > 0)
 
     select.addEventListener('change', () => {
       selectData.value = select.value
