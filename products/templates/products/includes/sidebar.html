@@ -1,12 +1,15 @@
 <div class="col-lg-3 order-2 order-lg-1">
   <aside class="sidebar">
-    <form action="page-search-results.html" method="get">
+    <form
+      action="{% if request.resolver_match.kwargs.product_slug %}{% url 'home' %} {% else %} {{request.path}} {% endif %}"
+      method="get"
+    >
       <div class="input-group mb-3 pb-1">
         <input
           class="form-control text-1"
           placeholder="Search..."
-          name="s"
-          id="s"
+          name="p_search"
+          value=""
           type="text"
         />
         <button type="submit" class="btn btn-dark text-1 p-2">

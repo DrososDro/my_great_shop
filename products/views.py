@@ -4,6 +4,7 @@ from django.views.generic import DetailView, ListView
 from products.models import Product
 from products.models.product_attritubes import ProductAttrs
 from products.forms import ProductForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -13,9 +14,35 @@ class Home(ListView):
     template_name = "products/shop3.html"
     paginate_by = 12
 
+    def get_queryset(self):
+        search = self.request.GET.get("p_search")
+        if search:
+            # ok here i acess variation category
+            # and after the variations to find values
+            return self.model.objects.distinct().filter(
+                Q(category__name__icontains=search)
+                | Q(variationscategory__variations__variation_value__icontains=search)
+                | Q(product_id__icontains=search)
+                | Q(alternative_product_ids__icontains=search)
+                | Q(description__icontains=search)
+                | Q(brand__icontains=search)
+            )
+        return self.model.objects.all()
+
 
 class CategoryView(Home):
     def get_queryset(self):
+        search = self.request.GET.get("p_search")
+        if search:
+            return self.model.objects.distinct().filter(
+                Q(variationscategory__variations__variation_value__icontains=search)
+                | Q(product_id__icontains=search)
+                | Q(alternative_product_ids__icontains=search)
+                | Q(description__icontains=search)
+                | Q(brand__icontains=search),
+                category__category_slug=self.kwargs["category_slug"],
+            )
+
         return self.model.objects.filter(
             category__category_slug=self.kwargs["category_slug"],
         )
