@@ -24,10 +24,10 @@ class ProductAttrs(models.Model):
         blank=True,
         null=True,
     )
-    condition = models.ForeignKey(
+    contition = models.ForeignKey(
         Variations,
         on_delete=models.CASCADE,
-        related_name="condition",
+        related_name="contition",
         blank=True,
         null=True,
     )

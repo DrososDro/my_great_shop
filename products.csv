@@ -1,0 +1,296 @@
+category;product_name;description;brand;color;size;price;quantity;price_b2b
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;M;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;L;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;XL;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;XXL;19.99;100;15.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;S;24.99;80;20.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;M;24.99;80;20.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;L;24.99;80;20.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;XL;24.99;80;20.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;32x32;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;34x32;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;36x32;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;32x34;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;34x34;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;36x34;39.99;120;33.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;M;29.99;60;25.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;L;29.99;60;25.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;XL;29.99;60;25.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;M;34.99;90;29.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;L;34.99;90;29.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;XL;34.99;90;29.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;M;49.99;50;44.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;L;49.99;50;44.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;XL;49.99;50;44.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;M;29.99;70;25.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;L;29.99;70;25.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;XL;29.99;70;25.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;M;17.99;100;15.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;L;17.99;100;15.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;XL;17.99;100;15.99
+Swimwear;Women's Sporty Swimsuit;"Sporty and stylish swimsuit for women.";Beach Babe;Blue;M;39.99;40;34.99
+Swimwear;Women's Sporty Swimsuit;"Sporty and stylish swimsuit for women.";Beach Babe;Blue;L;39.99;40;34.99
+Swimwear;Women's Sporty Swimsuit;"Sporty and stylish swimsuit for women.";Beach Babe;Blue;XL;39.99;40;34.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Navy;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Red;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Black;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;White;One Size;12.99;150;10.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Pink;One Size;14.99;80;12.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Blue;One Size;14.99;80;12.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Gray;One Size;14.99;80;12.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Beige;One Size;14.99;80;12.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;White;9.5;39.99;90;35.99
+
+
+
+Tops;Men's V-Neck Sweater;"Classic V-neck sweater for a sophisticated look.";Elegant Knits;Gray;L;34.99;100;30.99
+Tops;Women's Button-Down Shirt;"Chic and versatile button-down shirt for women.";Classy Chic;Blue;S;28.99;80;24.99
+Bottoms;Unisex Slim-Fit Jeans;"Slim-fit jeans for a modern and sleek look.";Modern Style;Dark Blue;31x34;39.99;120;35.99
+Bottoms;Women's Pencil Skirt;"Elegant pencil skirt for a polished outfit.";Office Glam;Black;M;26.99;60;22.99
+Dresses;Women's Cocktail Dress;"Stunning cocktail dress for evening events.";Night Glam;Black;L;44.99;90;39.99
+Outerwear;Men's Denim Jacket;"Classic denim jacket for a timeless style.";Denim Trends;Blue;XL;49.99;50;44.99
+Activewear;Women's Running Leggings;"Breathable and supportive leggings for running.";Run Elite;Black;M;28.99;70;24.99
+Activewear;Unisex Fitness Tank Top;"Sweat-wicking tank top for intense workouts.";Fit Gear;Red;L;19.99;100;15.99
+Swimwear;Women's High-Cut Swimsuit;"Flattering high-cut swimsuit for women.";Beach Vibes;Orange;S;33.99;40;29.99
+Accessories;Unisex Sun Hat;"Wide-brimmed sun hat for sun protection.";SunGuard;Natural;One Size;13.99;150;11.99
+Accessories;Women's Oversized Scarf;"Cozy and fashionable oversized scarf for cold days.";Fringe Fashion;Gray;One Size;16.99;80;13.99
+Shoes;Unisex Athletic Shoes;"Versatile athletic shoes for men and women.";Athletic Pro;Black;9;45.99;90;41.99
+Socks;Unisex Crew Socks;"Comfortable and durable crew socks for daily wear.";Comfy Feet;White;One Size;6.99;200;4.99
+Bags;Women's Crossbody Bag;"Stylish and convenient crossbody bag for women.";Fashion Cross;Beige;One Size;23.99;70;20.99
+Jewelry;Women's Statement Earrings;"Bold and trendy statement earrings for a standout look.";Bold Impressions;Gold;One Size;27.99;100;23.99
+
+
+Tops;Men's V-Neck Sweater;"Classic V-neck sweater for a sophisticated look.";Elegant Knits;Gray;L;34.99;100;30.99
+Tops;Women's Button-Down Shirt;"Chic and versatile button-down shirt for women.";Classy Chic;Blue;S;28.99;80;24.99
+Bottoms;Unisex Slim-Fit Jeans;"Slim-fit jeans for a modern and sleek look.";Modern Style;Dark Blue;31x34;39.99;120;35.99
+Bottoms;Women's Pencil Skirt;"Elegant pencil skirt for a polished outfit.";Office Glam;Black;M;26.99;60;22.99
+Dresses;Women's Cocktail Dress;"Stunning cocktail dress for evening events.";Night Glam;Black;L;44.99;90;39.99
+Outerwear;Men's Denim Jacket;"Classic denim jacket for a timeless style.";Denim Trends;Blue;XL;49.99;50;44.99
+Activewear;Women's Running Leggings;"Breathable and supportive leggings for running.";Run Elite;Black;M;28.99;70;24.99
+Activewear;Unisex Fitness Tank Top;"Sweat-wicking tank top for intense workouts.";Fit Gear;Red;L;19.99;100;15.99
+Swimwear;Women's High-Cut Swimsuit;"Flattering high-cut swimsuit for women.";Beach Vibes;Orange;S;33.99;40;29.99
+Accessories;Unisex Sun Hat;"Wide-brimmed sun hat for sun protection.";SunGuard;Natural;One Size;13.99;150;11.99
+Accessories;Women's Oversized Scarf;"Cozy and fashionable oversized scarf for cold days.";Fringe Fashion;Gray;One Size;16.99;80;13.99
+Shoes;Unisex Athletic Shoes;"Versatile athletic shoes for men and women.";Athletic Pro;Black;9;45.99;90;41.99
+Socks;Unisex Crew Socks;"Comfortable and durable crew socks for daily wear.";Comfy Feet;White;One Size;6.99;200;4.99
+Bags;Women's Crossbody Bag;"Stylish and convenient crossbody bag for women.";Fashion Cross;Beige;One Size;23.99;70;20.99
+Jewelry;Women's Statement Earrings;"Bold and trendy statement earrings for a standout look.";Bold Impressions;Gold;One Size;27.99;100;23.99
+Tops;Men's Polo Shirt;"Classic polo shirt for a casual yet smart appearance.";Casual Smart;Navy Blue;M;21.99;120;18.99
+Tops;Women's V-Neck Blouse;"Elegant V-neck blouse for a professional or dressy look.";Elegant Charm;White;L;29.99;90;25.99
+Bottoms;Men's Chino Pants;"Versatile chino pants for a refined casual outfit.";Casual Trends;Khaki;32x32;35.99;80;31.99
+Bottoms;Women's A-Line Skirt;"Flared A-line skirt for a feminine touch to your outfit.";Feminine Flair;Navy Blue;S;24.99;60;20.99
+Dresses;Women's Maxi Dress;"Flowy and comfortable maxi dress for a relaxed style.";Relax in Style;Green;M;32.99;70;28.99
+Outerwear;Men's Bomber Jacket;"Trendy bomber jacket for a fashionable statement.";Urban Chic;Olive Green;XL;38.99;50;34.99
+Activewear;Men's Running Shorts;"Lightweight and quick-drying shorts for running.";Run Fast;Black;L;17.99;100;13.99
+Activewear;Women's Sports Bra;"Supportive sports bra for various physical activities.";Active Life;Pink;M;22.99;120;18.99
+Swimwear;Men's Board Shorts;"Stylish and comfortable board shorts for beach days.";Beach Fun;Blue;32;27.99;80;23.99
+Swimwear;Women's Triangle Bikini;"Classic triangle bikini for a chic beach look.";Beach Chic;Red;S;29.99;100;25.99
+Accessories;Unisex Aviator Sunglasses;"Timeless aviator sunglasses for a cool and classic vibe.";Shades On;Silver;One Size;12.99;150;10.99
+Accessories;Women's Tote Bag;"Spacious and fashionable tote bag for everyday use.";Fashion Totes;Black;One Size;25.99;90;21.99
+Shoes;Men's Leather Dress Shoes;"Elegant leather dress shoes for formal occasions.";Formal Steps;Brown;10;54.99;60;50.99
+Shoes;Women's Ankle Boots;"Stylish ankle boots for a trendy and edgy look.";Trendy Steps;Black;7;42.99;80;38.99
+Socks;Women's Crew Socks;"Comfortable and colorful crew socks for women.";Colorful Comfort;Assorted;One Size;5.99;200;4.49
+Socks;Men's Dress Socks;"Classic and comfortable dress socks for men.";Dapper Socks;Black;One Size;6.99;200;4.99
+Bags;Unisex Backpack;"Durable and spacious backpack for everyday adventures.";Adventure Ready;Gray;One Size;29.99;100;25.99
+Bags;Men's Messenger Bag;"Sleek and practical messenger bag for men.";Urban Messenger;Brown;One Size;32.99;80;28.99
+Jewelry;Men's Leather Bracelet;"Stylish leather bracelet for a rugged yet trendy look.";Leather Style;Brown;One Size;19.99;120;15.99
+Jewelry;Women's Dangle Earrings;"Elegant and eye-catching dangle earrings for women.";Elegant Drops;Silver;One Size;24.99;80;20.99
+Tops;Women's Off-Shoulder Top;"Trendy off-shoulder top for a flirty and stylish outfit.";Flirty Shoulders;White;S;19.99;100;15.99
+Tops;Men's Plaid Shirt;"Classic plaid shirt for a timeless and casual style.";Plaid Comfort;Red;M;24.99;80;20.99
+Bottoms;Women's High-Waisted Jeans;"Comfortable high-waisted jeans for a flattering fit.";High-Rise Fit;Blue;28x32;36.99;60;32.99
+Dresses;Women's Wrap Dress;"Versatile wrap dress for a chic and comfortable look.";Wrap It Up;Floral Print;L;28.99;90;24.
+
+
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;M;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;L;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;XL;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;XXL;19.99;100;15.99
+
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;S;24.99;80;20.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;M;24.99;80;20.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;L;24.99;80;20.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;XL;24.99;80;20.99
+
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;32x32;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;34x32;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;36x32;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;32x34;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;34x34;39.99;120;33.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;36x34;39.99;120;33.99
+
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;M;29.99;60;25.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;L;29.99;60;25.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;XL;29.99;60;25.99
+
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;M;34.99;90;29.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;L;34.99;90;29.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;XL;34.99;90;29.99
+
+Outerwear;Men's Lightweight Jacket;"Vers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;Black;9.5;39.99;90;35.99
+
+
+
+
+
+
+
+
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;White;10;39.99;90;35.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;Black;10;39.99;90;35.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;White;One Size;7.99;200;5.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;Gray;One Size;7.99;200;5.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;Blue;One Size;7.99;200;5.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Black;One Size;21.99;60;18.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Beige;One Size;21.99;60;18.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Gray;One Size;21.99;60;18.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Navy;One Size;21.99;60;18.99
+Jewelry;Women's Pendant Necklace;"Elegant pendant necklace to add a touch of sophistication.";Elegance Collection;Silver;One Size;29.99;100;25.99
+Jewelry;Women's Pendant Necklace;"Elegant pendant necklace to add a touch of sophistication.";Elegance Collection;Gold;One Size;29.99;100;25.99
+Jewelry;Women's Pendant Necklace;"Elegant pendant necklace to add a touch of sophistication.";Elegance Collection;Rose Gold;One Size;29.99;100;25.99
+Tops;Men's Polo Shirt;"Classic polo shirt for a smart casual look.";Urban Style;Navy;M;24.99;110;20.99
+Tops;Men's Polo Shirt;"Classic polo shirt for a smart casual look.";Urban Style;Navy;L;24.99;110;20.99
+Tops;Men's Polo Shirt;"Classic polo shirt for a smart casual look.";Urban Style;Navy;XL;24.99;110;20.99
+Tops;Men's Polo Shirt;"Classic polo shirt for a smart casual look.";Urban Style;Navy;XXL;24.99;110;20.99
+Tops;Women's Graphic Tee;"Trendy graphic t-shirt for women.";Artistic Vibes;White;S;17.99;90;15.99
+Tops;Women's Graphic Tee;"Trendy graphic t-shirt for women.";Artistic Vibes;White;M;17.99;90;15.99
+Tops;Women's Graphic Tee;"Trendy graphic t-shirt for women.";Artistic Vibes;White;L;17.99;90;15.99
+Tops;Women's Graphic Tee;"Trendy graphic t-shirt for women.";Artistic Vibes;White;XL;17.99;90;15.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;30x32;42.99;80;38.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;32x32;42.99;80;38.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;34x32;42.99;80;38.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;36x32;42.99;80;38.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;30x34;42.99;80;38.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;32x34;42.99;80;38.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;34x34;42.99;80;38.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;36x34;42.99;80;38.99
+Bottoms;Women's High-Waisted Skirt;"Flattering high-waisted skirt for a retro look.";Retro Chic;Blue;M;27.99;70;23.99
+Bottoms;Women's High-Waisted Skirt;"Flattering high-waisted skirt for a retro look.";Retro Chic;Blue;L;27.99;70;23.99
+Bottoms;Women's High-Waisted Skirt;"Flattering high-waisted skirt for a retro look.";Retro Chic;Blue;XL;27.99;70;23.99
+Bottoms;Women's High-Waisted Skirt;"Flattering high-waisted skirt for a retro look.";Retro Chic;Blue;XXL;27.99;70;23.99
+Dresses;Women's Maxi Dress;"Elegant and flowy maxi dress for special occasions.";Glamorous Events;Red;M;39.99;50;35.99
+Dresses;Women's Maxi Dress;"Elegant and flowy maxi dress for special occasions.";Glamorous Events;Red;L;39.99;50;35.99
+Dresses;Women's Maxi Dress;"Elegant and flowy maxi dress for special occasions.";Glamorous Events;Red;XL;39.99;50;35.99
+Dresses;Women's Maxi Dress;"Elegant and flowy maxi dress for special occasions.";Glamorous Events;Red;XXL;39.99;50;35.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;M;49.99;50;44.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;L;49.99;50;44.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;XL;49.99;50;44.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;XXL;49.99;50;44.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;M;29.99;70;25.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;L;29.99;70;25.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;XL;29.99;70;25.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;XXL;29.99;70;25.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;M;17.99;100;15.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;L;17.99;100;15.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;XL;17.99;100;15.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;XXL;17.99;100;15.99
+Swimwear;Women's Sporty Swimsuit;"Sporty and stylish swimsuit for women.";Beach Babe;Blue;M;39.99;40;34.99
+Swimwear;Women's Sporty Swimsuit;"Sporty and stylish swimsuit for women.";Beach Babe;Blue;L;39.99;40;34.99
+Swimwear;Women's Sporty Swimsuit;"Sporty and stylish swimsuit for women.";Beach Babe;Blue;XL;39.99;40;34.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Navy;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Red;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Black;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;White;One Size;12.99;150;10.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Pink;One Size;14.99;80;12.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Blue;One Size;14.99;80;12.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Gray;One Size;14.99;80;12.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Beige;One Size;14.99;80;12.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;White;9.5;39.99;90;35.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;Black;9.5;39.99;90;35.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;White;10;39.99;90;35.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;Black;10;39.99;90;35.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;White;One Size;7.99;200;5.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;Black;One Size;7.99;200;5.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;Gray;One Size;7.99;200;5.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;Blue;One Size;7.99;200;5.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Black;One Size;21.99;60;18.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Beige;One Size;21.99;60;18.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Gray;One Size;21.99;60;18.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Navy;One Size;21.99;60;18.99
+Jewelry;Women's Pendant Necklace;"Elegant pendant necklace to add a touch of sophistication.";Elegance Collection;Silver;One Size;29.99;100;25.99
+Jewelry;Women's Pendant Necklace;"Elegant pendant necklace to add a touch of sophistication.";Elegance Collection;Gold;One Size;29.99;100;25.99
+Jewelry;Women's Pendant Necklace;"Elegant pendant necklace to add a touch of sophistication.";Elegance Collection;Rose Gold;One Size;29.99;100;25.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;L;19.99;100;15.99
+Tops;Women's Elegant Blouse;"Elegant and sophisticated blouse for formal occasions.";Elegant Designs;White;S;24.99;80;20.99
+Bottoms;Unisex Regular Fit Jeans;"Classic regular fit jeans for men and women.";Denim Co.;Blue;32x32;39.99;120;33.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;M;29.99;60;25.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;L;34.99;90;29.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;XL;49.99;50;44.99
+Activewear;Women's High-Performance Leggings;"Stay comfortable and active in these high-performance leggings.";Fit and Active;Black;M;29.99;70;25.99
+Activewear;Unisex Active Tank Top;"Breathable and comfortable tank top for workouts.";Sporty Wear;Blue;XL;17.99;100;15.99
+Swimwear;Women's Sporty Swimsuit;"Sporty and stylish swimsuit for women.";Beach Babe;Blue;M;39.99;40;34.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Navy;One Size;12.99;150;10.99
+Accessories;Women's Lightweight Scarf;"Elegant and lightweight scarf for any occasion.";Chic Accessories;Pink;One Size;14.99;80;12.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;White;9.5;39.99;90;35.99
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;White;One Size;7.99;200;5.99
+Bags;Women's Canvas Tote Bag;"Stylish and spacious tote bag for women.";Carry All;Black;One Size;21.99;60;18.99
+Jewelry;Women's Pendant Necklace;"Elegant pendant necklace to add a touch of sophistication.";Elegance Collection;Silver;One Size;29.99;100;25.99
+Tops;Men's Polo Shirt;"Classic polo shirt for a smart casual look.";Urban Style;Navy;M;24.99;110;20.99
+Tops;Women's Graphic Tee;"Trendy graphic t-shirt for women.";Artistic Vibes;White;S;17.99;90;15.99
+Bottoms;Unisex Skinny Jeans;"Modern skinny jeans for men and women.";Fashion Forward;Black;30x32;42.99;80;38.99
+Bottoms;Women's High-Waisted Skirt;"Flattering high-waisted skirt for a retro look.";Retro Chic;Blue;M;27.99;70;23.99
+Dresses;Women's Maxi Dress;"Elegant and flowy maxi dress for special occasions.";Glamorous Events;Red;L;39.99;50;35.99
+Outerwear;Men's Hooded Jacket;"Casual and comfortable hooded jacket for men.";Urban Gear;Green;XL;44.99;70;39.99
+Activewear;Women's Yoga Leggings;"Stretchy and supportive leggings for yoga.";Yoga Moves;Gray;S;31.99;90;27.99
+Activewear;Unisex Sports Shorts;"Breathable and versatile sports shorts for any activity.";ActiveLife;Black;L;19.99;120;15.99
+Swimwear;Women's One-Shoulder Swimsuit;"Stylish one-shoulder swimsuit for women.";Beach Glam;Black;S;37.99;60;33.99
+Accessories;Unisex Beanie Hat;"Warm and stylish beanie hat for colder days.";Winter Essentials;Charcoal;One Size;10.99;150;8.99
+Accessories;Women's Fringed Scarf;"Chic fringed scarf to elevate any outfit.";Fringe Fashion;Gray;One Size;16.99;80;13.99
+Shoes;Unisex Athletic Shoes;"Versatile athletic shoes for men and women.";Athletic Pro;Black;9;45.99;90;41.99
+Socks;Unisex Crew Socks;"Comfortable and durable crew socks for daily wear.";Comfy Feet;White;One Size;6.99;200;4.99
+Bags;Women's Crossbody Bag;"Stylish and convenient crossbody bag for women.";Fashion Cross;Beige;One Size;23.99;70;20.99
+Jewelry;Women's Statement Earrings;"Bold and trendy statement earrings for a standout look.";Bold Impressions;Gold;One Size;27.99;100;23.99
+Tops;Men's V-Neck Sweater;"Classic V-neck sweater for a sophisticated look.";Elegant Knits;Gray;M;34.99;100;30.99
+Tops;Women's Button-Down Shirt;"Chic and versatile button-down shirt for women.";Classy Chic;Blue;S;28.99;80;24.99
+Bottoms;Unisex Slim-Fit Jeans;"Slim-fit jeans for a modern and sleek look.";Modern Style;Dark Blue;31x34;39.99;120;35.99
+Bottoms;Women's Pencil Skirt;"Elegant pencil skirt for a polished outfit.";Office Glam;Black;M;26.99;60;22.99
+Dresses;Women's Cocktail Dress;"Stunning cocktail dress for evening events.";Night Glam;Black;L;44.99;90;39.99
+Outerwear;Men's Denim Jacket;"Classic denim jacket for a timeless style.";Denim Trends;Blue;XL;49.99;50;44.99
+Activewear;Women's Running Leggings;"Breathable and supportive leggings for running.";Run Elite;Black;M;28.99;70;24.99
+Activewear;Unisex Fitness Tank Top;"Sweat-wicking tank top for intense workouts.";Fit Gear;Red;L;19.99;100;15.99
+Swimwear;Women's High-Cut Swimsuit;"Flattering high-cut swimsuit for women.";Beach Vibes;Orange;S;33.99;40;29.99
+Accessories;Unisex Sun Hat;"Wide-brimmed sun hat for sun protection.";SunGuard;Natural;One Size;13.99;150;11.99
+Accessories;Women's Oversized Scarf;"Cozy and fashionable oversized scarf for cold days.";Fringe Fashion;Gray;One Size;16.99;80;13.99
+Shoes;Unisex Athletic Shoes;"Versatile athletic shoes for men and women.";Athletic Pro;Black;9;45.99;90;41.99
+Socks;Unisex Crew Socks;"Comfortable and durable crew socks for daily wear.";Comfy Feet;White;One Size;6.99;200;4.99
+Bags;Women's Crossbody Bag;"Stylish and convenient crossbody bag for women.";Fashion Cross;Beige;One Size;23.99;70;20.99
+Jewelry;Women's Statement Earrings;"Bold and trendy statement earrings for a standout look.";Bold Impressions;Gold;One Size;27.99;100;23.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;M;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;L;19.99;100;15.99
+Tops;Men's Casual T-shirt;"Comfortable and stylish men's t-shirt, perfect for everyday wear.";ABC Apparel;Black;XL;19.99;100;15.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;M;34.99;90;29.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;L;34.99;90;29.99
+Dresses;Women's Summer Dress;"Lightweight and trendy summer dress for women.";Sunshine Fashion;Floral;XL;34.99;90;29.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;M;49.99;50;44.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;L;49.99;50;44.99
+Outerwear;Men's Lightweight Jacket;"Versatile lightweight jacket for men.";Outdoor Gear;Gray;XL;49.99;50;44.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;M;29.99;60;25.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;L;29.99;60;25.99
+Bottoms;Women's A-line Skirt;"Flattering A-line skirt for a chic look.";Fashionista Chic;Red;XL;29.99;60;25.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Navy;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Red;One Size;12.99;150;10.99
+Accessories;Unisex Baseball Cap;"Classic baseball cap for a sporty look.";Cap It Off;Black;One Size;12.99;150;10.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;White;9.5;39.99;90;35.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;Black;9.5;39.99;90;35.99
+Shoes;Unisex Canvas Sneakers;"Comfortable and casual canvas sneakers for everyone.";Footworks;White;10;39.99;90;35.99
+
+
+
+
+Socks;Unisex Ankle Socks;"Soft and comfortable ankle socks for everyday wear.";Cozy Feet;Black;One Size;7.99;200;5.99

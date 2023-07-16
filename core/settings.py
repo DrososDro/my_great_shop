@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "variations.apps.VariationsConfig",
     "categories.apps.CategoriesConfig",
     "cart.apps.CartConfig",
+    "products_admin.apps.ProductsAdminConfig",
 ]
 
 MIDDLEWARE = [
