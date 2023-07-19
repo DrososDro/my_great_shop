@@ -1,10 +1,11 @@
 import json
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.generic import DetailView, ListView
 from products.models import Product
 from products.models.product_attritubes import ProductAttrs
 from products.forms import ProductForm
 from django.db.models import Q
+from django.views import View
 
 # Create your views here.
 
@@ -64,9 +65,9 @@ class ProductView(DetailView):
 
     def post(self, *args, **kwargs):
         data_dict = {
-            i["name"]: i["value"]
-            for i in json.loads(self.request.body)
-            if i["value"] != ""
+            product["name"]: product["value"]
+            for product in json.loads(self.request.body)
+            if product["value"] != ""
         }
 
         price = ""
@@ -74,6 +75,7 @@ class ProductView(DetailView):
         offer_duration = ""
         quantity = "Out of Stock"
         discount_price = ""
+        product_id = ""
 
         try:
             product = ProductAttrs.objects.get(
@@ -92,12 +94,14 @@ class ProductView(DetailView):
                 discount_price = f"{discount_price_}$"
             if product.quantity:
                 quantity = product.quantity
+                product_id = product.id
 
         except Exception:
             pass
 
         return JsonResponse(
             {
+                "productAttr_id": product_id,
                 "price": price,
                 "offer": offer,
                 "offer_duration": offer_duration,
@@ -105,3 +109,11 @@ class ProductView(DetailView):
                 "discount_price": discount_price,
             }
         )
+
+
+class AddToCart(View):
+    def post(self, *args, **kwargs):
+        product_attr = self.request.POST["productattr_id"]
+        product = ProductAttrs.objects.get(id=product_attr)
+        print(product)
+        return HttpResponse()

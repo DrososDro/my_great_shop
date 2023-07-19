@@ -1,8 +1,10 @@
+'use strict'
 function AjaxReq(dataList) {
   let csrfToken = document.querySelector(
     'input[name="csrfmiddlewaretoken"]',
   ).value
   var maxVal = document.getElementById('product_quantity')
+  var product_attr = document.getElementById('productAttr_id')
 
   $.ajax({
     type: 'POST',
@@ -14,6 +16,7 @@ function AjaxReq(dataList) {
     },
     success: function (response) {
       maxVal.max = response.quantity
+      product_attr.value = response.productAttr_id
       $('#offer').html(response.offer)
       $('#price').html(response.price)
       $('#discount_price').html(response.discount_price)
@@ -27,9 +30,11 @@ function AjaxReq(dataList) {
     },
   })
 }
+
 function singleProductAjax() {
   const selectElements = document.querySelectorAll('select')
   const selectDataList = []
+  let i = 0
 
   selectElements.forEach((select) => {
     const selectData = {
@@ -38,10 +43,14 @@ function singleProductAjax() {
       value: select.value,
     }
     selectDataList.push(selectData)
+    i++
 
     select.addEventListener('change', () => {
       selectData.value = select.value
-      AjaxReq(selectDataList)
+      if (i > selectDataList.length - 1) {
+        AjaxReq(selectDataList)
+        i = 0
+      }
     })
   })
 }

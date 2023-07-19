@@ -77,9 +77,10 @@
                             <form enctype="multipart/form-data"
                                   method="post"
                                   class="cart"
-                                  onclick="singleProductAjax()"
+                                  id="form_product_id"
+                                  onchange="singleProductAjax()"
                                   onload="callAjaxReq()"
-                                  action="shop-cart.html">
+                                  action="{% url 'add-to-cart' %}">
                                 <!--table-->
                                 {% csrf_token %}
                                 {% if form %}
@@ -114,6 +115,7 @@
                                            max="10"
                                            class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
                                            value="+">
+                                    <input type="hidden" id="productAttr_id" value="" name="productattr_id">
                                 </div>
                                 <button type="submit"
                                         id="button"
