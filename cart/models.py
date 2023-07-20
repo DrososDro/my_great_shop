@@ -29,7 +29,7 @@ class CartItems(models.Model):
         editable=False,
     )
     product = models.ForeignKey(ProductAttrs, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

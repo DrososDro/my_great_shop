@@ -1,11 +1,10 @@
 import json
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.views.generic import DetailView, ListView
 from products.models import Product
 from products.models.product_attritubes import ProductAttrs
 from products.forms import ProductForm
 from django.db.models import Q
-from django.views import View
 
 # Create your views here.
 
@@ -109,11 +108,3 @@ class ProductView(DetailView):
                 "discount_price": discount_price,
             }
         )
-
-
-class AddToCart(View):
-    def post(self, *args, **kwargs):
-        product_attr = self.request.POST["productattr_id"]
-        product = ProductAttrs.objects.get(id=product_attr)
-        print(product)
-        return HttpResponse()

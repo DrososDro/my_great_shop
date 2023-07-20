@@ -1,0 +1,4 @@
+if user is authenticated and have cart
+if user is unauthenticated and have cart
+if user id authenticated and not have cart
+  if user is unauthenticated and not have cart

@@ -1,0 +1,18 @@
+from django.db.models import Sum
+
+from cart.models import Cart
+
+
+def cart_items_assign(request):
+    items = None
+    try:
+        cart = Cart.objects.get(user=request.user)
+    except Exception:
+        try:
+            cart = Cart.objects.get(cart_id=request.session.session_key)
+        except Exception:
+            cart = None
+    if cart:
+        items = cart.cart_items.aggregate(Sum("quantity"))
+
+    return dict(cart_quantity=items.get("quantity__sum"))
