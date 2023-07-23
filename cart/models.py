@@ -15,7 +15,12 @@ class Cart(models.Model):
         primary_key=True,
         editable=False,
     )
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(
+        Account,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
     cart_id = models.CharField(max_length=250, blank=True, null=True)
     cart_items = models.ManyToManyField("CartItems")
 
@@ -34,7 +39,6 @@ class CartItems(models.Model):
         primary_key=True,
         editable=False,
     )
-    cart_model = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(ProductAttrs, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
 

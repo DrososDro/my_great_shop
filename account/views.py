@@ -44,7 +44,7 @@ class Login(LoginView):
                 pass
             else:
                 user_cart.add(*session_cart.cart_items.all())
-                user_cart.save_m2m()
+                session_cart.cart_items.clear()
                 session_cart.delete()
 
         return context
