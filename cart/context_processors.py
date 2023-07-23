@@ -4,7 +4,7 @@ from cart.models import Cart
 
 
 def cart_items_assign(request):
-    items = None
+    items = {}
     try:
         cart = Cart.objects.get(user=request.user)
     except Exception:

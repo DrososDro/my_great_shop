@@ -19,6 +19,8 @@ from account.admin import UserCreationForm
 from account.forms import UpdateAccount, BillingAddressForm, DeliveyAddressForm
 from account.utils import profile_img_rename
 from django.core.mail import EmailMessage
+from cart.models import Cart
+from cart.utils import get_or_create_cart
 
 # Create your views here.
 
@@ -28,6 +30,24 @@ class Login(LoginView):
     template_name = "account/login_register.html"
     extra_context = {"login": True}
     next_page = reverse_lazy("home")
+
+    def post(self, request, *args, **kwargs):
+        cart_id = request.session.session_key
+
+        context = super().post(request, *args, **kwargs)
+        if cart_id:
+            try:
+                session_cart = Cart.objects.get(cart_id=cart_id)
+                user_cart = get_or_create_cart(request).cart_items
+
+            except Cart.DoesNotExist:
+                pass
+            else:
+                user_cart.add(*session_cart.cart_items.all())
+                user_cart.save_m2m()
+                session_cart.delete()
+
+        return context
 
 
 class Logout(LogoutView):
