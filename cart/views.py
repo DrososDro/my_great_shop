@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.views import View
-from django.views.generic import DetailView, ListView
-from cart.models import Cart
+from django.views.generic import ListView
+from cart.models import CartItems
 from cart.utils import get_or_create_cart
 from django.contrib import messages
 
@@ -26,6 +26,30 @@ class AddToCart(View):
         cart_item.save()
         messages.success(self.request, "Your item sucessfully added to cart!")
         return redirect(redirect_path)
+
+
+class UpdateProductQuantiry(View):
+    def get(self, *args, **kwargs):
+        try:
+            cart_item = CartItems.objects.get(id=kwargs["pk"])
+        except CartItems.DoesNotExist:
+            pass
+        else:
+            if kwargs["action"] == "+":
+                cart_item.quantity += 1
+            elif kwargs["action"] == "-":
+                cart_item.quantity -= 1
+            else:
+                cart_item.quantity = 0
+
+            if cart_item.quantity > cart_item.max_quantity:
+                cart_item.quantity = cart_item.max_quantity
+
+            cart_item.save()
+
+            if cart_item.quantity < 1:
+                cart_item.delete()
+        return redirect("cart")
 
 
 class CartView(ListView):

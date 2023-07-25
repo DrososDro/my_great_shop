@@ -55,6 +55,10 @@ class CartItems(models.Model):
         return descount_price or price
 
     @property
+    def max_quantity(self):
+        return self.product.quantity
+
+    @property
     def cart_subtotal(self):
         return self.quantity * self.cart_item_price
 
