@@ -28,27 +28,29 @@ class AddToCart(View):
         return redirect(redirect_path)
 
 
-class UpdateProductQuantiry(View):
+class UpdateProductQuantity(View):
     def get(self, *args, **kwargs):
         try:
-            cart_item = CartItems.objects.get(id=kwargs["pk"])
+            CartItems.objects.get(id=kwargs["pk"]).delete()
         except CartItems.DoesNotExist:
             pass
-        else:
-            if kwargs["action"] == "+":
-                cart_item.quantity += 1
-            elif kwargs["action"] == "-":
-                cart_item.quantity -= 1
+
+        messages.success(self.request, "Your Cart sucessfully updated!")
+        return redirect("cart")
+
+    def post(self, *args, **kwargs):
+        form_dict = self.request.POST
+        for pk, value in form_dict.items():
+            try:
+                cart_item = CartItems.objects.get(id=pk)
+                int(value)
+            except Exception as e:
+                pass
             else:
-                cart_item.quantity = 0
+                cart_item.quantity = int(value)
+                cart_item.save()
 
-            if cart_item.quantity > cart_item.max_quantity:
-                cart_item.quantity = cart_item.max_quantity
-
-            cart_item.save()
-
-            if cart_item.quantity < 1:
-                cart_item.delete()
+        messages.success(self.request, "Your Cart sucessfully updated!")
         return redirect("cart")
 
 
