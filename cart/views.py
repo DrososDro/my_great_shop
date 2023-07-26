@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.views import View
 from django.views.generic import ListView
 from cart.models import CartItems
-from cart.utils import get_or_create_cart
+from cart.utils import get_billint_address, get_delivery_address, get_or_create_cart
 from django.contrib import messages
 
 
@@ -17,7 +17,9 @@ class AddToCart(View):
         quantity = self.request.POST["quantity"]
         redirect_path = self.request.POST["redirect_path"]
 
-        cart_item, created = cart.cart_items.get_or_create(product_id=product)
+        cart_item, created = CartItems.objects.get_or_create(
+            product_id=product, cart=cart
+        )
         if created:
             cart_item.quantity = int(quantity)
         else:
@@ -59,3 +61,17 @@ class CartView(ListView):
 
     def get_queryset(self):
         return get_or_create_cart(self.request)
+
+
+class Checkout(ListView):
+    template_name = "cart/shop-checkout.html"
+
+    def get_queryset(self):
+        return None
+
+    def get_context_data(self):
+        context = {}
+
+        context["billing_address"] = get_billint_address(self.request)
+        context["delivery_address"] = get_delivery_address(self.request)
+        return context

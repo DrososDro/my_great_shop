@@ -19,7 +19,7 @@ from account.admin import UserCreationForm
 from account.forms import UpdateAccount, BillingAddressForm, DeliveyAddressForm
 from account.utils import profile_img_rename
 from django.core.mail import EmailMessage
-from cart.models import Cart
+from cart.models import Cart, CartItems
 from cart.utils import get_or_create_cart
 
 # Create your views here.
@@ -38,13 +38,22 @@ class Login(LoginView):
         if cart_id:
             try:
                 session_cart = Cart.objects.get(cart_id=cart_id)
-                user_cart = get_or_create_cart(request).cart_items
+                user_cart = get_or_create_cart(request)
 
             except Cart.DoesNotExist:
                 pass
             else:
-                user_cart.add(*session_cart.cart_items.all())
-                session_cart.cart_items.clear()
+                for items in session_cart.cartitems_set.all():
+                    cart_item, created = CartItems.objects.get_or_create(
+                        product=items.product, cart=user_cart
+                    )
+
+                    if created:
+                        cart_item.quantity = items.quantity
+                    else:
+                        cart_item.quantity += items.quantity
+                    cart_item.save()
+
                 session_cart.delete()
 
         return context
@@ -137,16 +146,22 @@ class BillingAddressView(UpdateView):
     form_class = BillingAddressForm
 
     def get_success_url(self):
+        next = self.request.POST.get("next")
         self.success_url = self.request.user.billing_url()
         messages.success(
             self.request,
             "You successfully update your billing info",
         )
+
+        if next:
+            return next
         return super().get_success_url()
 
     def get_context_data(self, **kwargs):
+        next = self.request.GET.get("next")
         context = super().get_context_data(**kwargs)
         context["action"] = self.request.user.billing_url()
+        context["next"] = next or ""
         return context
 
 
@@ -156,14 +171,19 @@ class DeliveryAddressView(UpdateView):
     form_class = DeliveyAddressForm
 
     def get_success_url(self):
+        next = self.request.POST.get("next")
         self.success_url = self.request.user.delivery_url()
         messages.success(
             self.request,
             "You successfully update your billing info",
         )
+        if next:
+            return next
         return super().get_success_url()
 
     def get_context_data(self, **kwargs):
+        next = self.request.GET.get("next")
         context = super().get_context_data(**kwargs)
         context["action"] = self.request.user.delivery_url()
+        context["next"] = next or ""
         return context

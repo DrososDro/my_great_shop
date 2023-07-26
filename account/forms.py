@@ -37,7 +37,7 @@ class BillingAddressForm(forms.ModelForm):
     class Meta:
         model = BillingAdress
         fields = "__all__"
-        exclude = ["delivery_address"]
+        exclude = ["delivery_address", "billing_address"]
 
     def __init__(self, *args, **kwargs):
         super(BillingAddressForm, self).__init__(*args, **kwargs)
@@ -53,7 +53,7 @@ class DeliveyAddressForm(forms.ModelForm):
     class Meta:
         model = BillingAdress
         fields = "__all__"
-        exclude = ["billing_address"]
+        exclude = ["billing_address", "delivery_address"]
 
     def __init__(self, *args, **kwargs):
         super(DeliveyAddressForm, self).__init__(*args, **kwargs)

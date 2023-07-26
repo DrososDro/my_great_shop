@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
 
-from django.db.models.aggregates import Sum
 from products.models import ProductAttrs
 from account.models import Account
 
@@ -15,6 +14,7 @@ class Cart(models.Model):
         primary_key=True,
         editable=False,
     )
+    delivery_address = models.BooleanField(default=False)
     user = models.ForeignKey(
         Account,
         on_delete=models.CASCADE,
@@ -22,14 +22,13 @@ class Cart(models.Model):
         blank=True,
     )
     cart_id = models.CharField(max_length=250, blank=True, null=True)
-    cart_items = models.ManyToManyField("CartItems")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     @property
     def cart_items_subtotal_sum(self):
-        return sum({i.cart_subtotal for i in self.cart_items.all()})
+        return sum((i.cart_subtotal for i in self.cartitems_set.all()))
 
 
 class CartItems(models.Model):
@@ -39,6 +38,7 @@ class CartItems(models.Model):
         primary_key=True,
         editable=False,
     )
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(ProductAttrs, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
 

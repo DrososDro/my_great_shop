@@ -13,6 +13,6 @@ def cart_items_assign(request):
         except Exception:
             cart = None
     if cart:
-        items = cart.cart_items.aggregate(Sum("quantity"))
+        items = cart.cartitems_set.aggregate(Sum("quantity"))
 
     return dict(cart_quantity=items.get("quantity__sum"))

@@ -9,4 +9,5 @@ urlpatterns = [
         views.UpdateProductQuantity.as_view(),
         name="update-product",
     ),
+    path("checkout/", views.Checkout.as_view(), name="checkout"),
 ]
