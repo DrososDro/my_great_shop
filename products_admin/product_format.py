@@ -92,5 +92,4 @@ class NamedTupleInCsvFormat:
             self.product = self.get_product_or_create()
             self.variations = self.get_variations_category_or_create()
         except Exception as e:
-            print(self.__dict__, e)
-            # pass
+             pass

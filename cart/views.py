@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 from cart.models import CartItems
 from cart.utils import get_billint_address, get_delivery_address, get_or_create_cart
 from django.contrib import messages
@@ -56,22 +56,43 @@ class UpdateProductQuantity(View):
         return redirect("cart")
 
 
-class CartView(ListView):
+class CartView(DetailView):
     template_name = "cart/shop-cart.html"
 
-    def get_queryset(self):
+    def get_object(self):
         return get_or_create_cart(self.request)
+
+    def post(self, *args, **kwargs):
+        payment = self.request.POST.get("payment_method")
+        shiping = self.request.POST.get("shipping_method")
+        cart = self.get_object()
+        cart.shipping_method = shiping
+        cart.payment_method = payment
+        cart.save()
+
+        return redirect("checkout")
 
 
 class Checkout(ListView):
     template_name = "cart/shop-checkout.html"
 
     def get_queryset(self):
-        return None
+        return get_or_create_cart(self.request)
 
-    def get_context_data(self):
-        context = {}
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
 
+        cart = self.get_queryset()
         context["billing_address"] = get_billint_address(self.request)
         context["delivery_address"] = get_delivery_address(self.request)
+        context["payment_method"] = cart.payment_method
+        context["shipping_method"] = cart.shipping_method
+
         return context
+
+
+class Test(ListView):
+    template_name = "cart/shop-order-complete.html"
+
+    def get_queryset(self):
+        return None

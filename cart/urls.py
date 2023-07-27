@@ -10,4 +10,5 @@ urlpatterns = [
         name="update-product",
     ),
     path("checkout/", views.Checkout.as_view(), name="checkout"),
+    path("test/", views.Test.as_view(), name="test"),
 ]
